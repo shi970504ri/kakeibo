@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/auth/login.css}">
+		<title>
+			二段階認証
+		</title>
+	</head>
+	<body>
+		<div class="login">
+			<h2>
+				二段階認証
+			</h2>
+			<form action="login.html">
+				<label>
+					メールアドレスの認証コード
+				</label>
+				<input type="text" required>
+				<button class="resend_btn" type="submit">
+					認証コードを再送する
+				</button>
+				<label>
+					電話番号の認証コード
+				</label>
+				<input type="text" required>
+				<button class="resend_btn" type="submit">
+					認証コードを再送する
+				</button>
+				<button class="auth_btn" type="submit">
+					認証
+				</button>
+			</form>
+		</div>
+	</body>
+</html> 

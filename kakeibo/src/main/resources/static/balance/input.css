@@ -1,0 +1,138 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+body {
+	background:	rgba(150, 150, 150, 1);
+
+}
+.input_top {
+	max-width: 1100px;
+	margin: auto;
+}
+.section {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.section_title {
+	background: rgba(255, 255, 255, 1);
+	border-left: 10px solid rgb(125, 225, 250);
+	padding: 5px 20px;
+	font-size: 35px;
+	margin-bottom: 20px;
+}
+.basic_info {
+	display: flex;
+	gap: 15px;
+}
+.basic_info input {
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	padding: 0 5px;
+	font-size: 15px;
+}
+.basic_info input[type="date"] {
+	width: 170px;
+}
+.basic_info input[type="time"] {
+	width: 120px;
+}
+.basic_info input[type="text"] {
+	width: 350px;
+}
+.detail_list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.detail_row {
+	display: grid;
+	grid-template-columns: 90px 150px 160px 170px 90px 300px 80px;
+	gap: 10px;
+	align-items: center;
+}
+.no {
+	display: flex;
+	height: 40px;
+	padding-left: 5px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 5px;
+	align-items: center;
+	font-size: 15px;
+}
+.detail_row select {
+	height: 40px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 5px;
+	font-size: 15px;
+}
+.item_amount, .item_category, .item_file, .item_memo, .item_delete {
+	display: flex;
+	height: 40px;
+	align-items: center;
+}
+.item_amount input[type="number"], .item_category input[type="text"], .item_memo input[type="text"] {
+	height: 100%;
+	width: 100%;
+	padding-left: 5px;
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+}
+.file_btn {
+	width: 100%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 1);
+}
+.file_btn:hover {
+	opacity: 0.75;
+}
+.fine_name {
+	margin-left: 10px;
+	color: rgba(255, 255, 255, 1);
+}
+.delete_btn {
+	height: 100%;
+	width: 100%;
+	background: rgba(255, 0, 0, 1);
+	color: rgba(255, 255, 255, 1);
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	cursor: pointer;
+}
+.delete_btn:hover {
+	opacity: 0.75;
+}
+.item_addition {
+	padding-top: 40px;
+}
+.addition_btn {
+	width: 100%;
+	height: 40px;
+	background: rgba(125, 225, 250, 1);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.register_list {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+.register_btn {
+	width: 10ch;
+	height: 40px;
+	background: rgba(125, 225, 250, 1);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.addition_btn:hover, .register_btn:hover {
+	opacity: 0.75;
+}

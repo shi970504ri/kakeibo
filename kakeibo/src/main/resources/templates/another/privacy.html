@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/another/privacy.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			プライバシーポリシー
+		</title>
+	</head>
+	<body class="privacy_body">
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="privacy" th:fragment="privacy_content">
+			<div class="privacy_top">
+				<h1 class="privacy_title">
+					＝プライバシーポリシー＝
+				</h1>
+				<section class="article">
+					<h2 class="article_title">
+						第１条　取得する情報
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本サービスは、以下の情報を取得する。
+								<span class="item">
+									（１）メールアドレス
+								</span>
+								<span class="item">
+									（２）電話番号
+								</span>
+								<span class="item">
+									（３）収入、支出、カテゴリ等の取引データ
+								</span>
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第２条　利用目的
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　取得した情報は、以下の目的のために利用する。
+								<span class="item">
+									（１）ユーザー認証及びログイン管理
+								</span>
+								<span class="item">
+									（２）二段階認証の実施
+								</span>
+								<span class="item">
+									（３）本サービスの機能提供及び改善
+								</span>
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第３条　情報の管理
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　運営者は、取得した情報の漏洩、紛失又は不正アクセスを防止するため、適切な安全管理措置を講じる。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　個人情報は、利用目的の範囲内でのみ取り扱う。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第４条　第三者提供
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　運営者は、ユーザーの同意なく個人情報を第三者に提供しない。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　ただし、以下の場所を除く。
+								<span class="item">
+									（１）法令に基づく場合
+								</span>
+								<span class="item">
+									（２）人の生命、身体又は財産の保護に必要な場合
+								</span>
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第５条　ユーザーの権利
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、自己の個人情報について、確認、訂正及び削除を求めることができる。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　前項の請求があった場合、運営者は合理的な範囲で対応する。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="revition_info">
+					<p class="revition_list">
+						制定日・改定日
+					</p>
+					<p class="create">
+						制定日：2026年8月1日
+					</p>
+					<p class="revision">
+						改定日：ー
+					</p>
+				</section>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

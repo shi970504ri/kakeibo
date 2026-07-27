@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/user/register.css}">
+		<link rel="stylesheet" th:href="@{/another/terms.css}">
+		<link rel="stylesheet" th:href="@{/another/privacy.css}">
+		<link rel="stylesheet" th:href="@{/another/disclaimer.css}">
+		<title>
+			新規登録
+		</title>
+	</head>
+	<body class="register_body">
+		<div class="register">
+			<h2 class="register_title">
+				新規登録
+			</h2>
+			<form autocomplete="off" method="post">
+				<label class="email">
+					メールアドレス
+				</label>
+				<input class="email_input" type="email" inputmode="email" autocomplete="off" required>
+				<div class="error email_error">
+				</div>
+				<label class="password">
+					パスワード
+				</label>
+				<div class="password_action">
+					<input class="password_input" type="password" inputmode="latin" autocomplete="new-password" required>
+					<button class="password_btn" type="button" onclick="togglePasswordVisibility('.password_input', this)">
+						&nbsp;
+					</button>
+				</div>
+				<div class="password_check_list">
+					<div class="check_item" id="req_upper">
+						<span class="icon">
+							□
+						</span>
+						大文字英字を使用
+					</div>
+					<div class="check_item" id="req_lower">
+						<span class="icon">
+							□
+						</span>
+						小文字英字を使用
+					</div>
+					<div class="check_item" id="req_number">
+						<span class="icon">
+							□
+						</span>
+						数字を使用
+					</div>
+					<div class="check_item" id="req_symbol">
+						<span class="icon">
+							□
+						</span>
+						記号(!?#$%&@*+)を使用
+					</div>
+					<div class="check_item" id="req_length">
+						<span class="icon">
+							□
+						</span>
+						8文字以上
+					</div>
+				</div>
+				<label class="password_confirm">
+					パスワード(確認用)
+				</label>
+				<div class="password_confirm_action">
+					<input class="password_confirm_input" type="password" inputmode="latin" autocomplete="new-password" required>
+					<button class="password_confirm_btn" type="button" onclick="togglePasswordConfirmVisibility('.password_confirm_input', this)">
+						&nbsp;
+					</button>
+				</div>
+				<div class="error passwordConfirm_error">
+				</div>
+				<div class="terms">
+					<div class="terms_item">
+						<input class="chk_terms" id="chk_terms" type="checkbox" required>
+						<span class="terms_link" onclick="openModal('terms')">
+							利用規約
+						</span>
+					</div>
+					<div class="terms_item">
+						<input class="chk_privacy" id="chk_privacy" type="checkbox" required>
+						<span class="privacy_link" onclick="openModal('privacy')">
+							プライバシーポリシー
+						</span>
+					</div>
+					<div class="terms_item">
+						<input class="chk_disclaimer" id="chk_disclaimer" type="checkbox" required>
+						<span class="disclaimer_link" onclick="openModal('disclaimer')">
+							免責事項
+						</span>
+					</div>
+				</div>
+				<button class="register_btn" id="submit_btn" type="submit" disabled>
+					登録
+				</button>
+			</form>
+			<div class="link">
+				<a class="back_btn" href="login">
+					戻る
+				</a>
+			</div>
+		</div>
+		<div class="modal" id="terms_modal">
+			<div class="modal_content">
+				<div class="modal_title" id="modal_title">
+					規約タイトル
+				</div>
+				<div class="modal_body" id="modal_body">
+					ここに規約本文が入ります
+				</div>
+				<button class="modal_close_btn" type="button" onclick="closeModal()">
+					閉じて同意する
+				</button>
+			</div>
+		</div>
+		<script th:inline="javascript">
+			const URLS = {
+				terms: /*[[@{/another/terms}]]*/ '/another/terms',
+				privacy: /*[[@{/another/privacy}]]*/ '/another/privacy',
+				disclaimer: /*[[@{/another/disclaimer}]]*/ '/another/disclaimer',
+			}
+		</script>
+		<script th:src="@{/user/register.js}" defer></script>
+	</body>
+</html>

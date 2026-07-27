@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/top.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			トップ
+		</title>
+	</head>
+	<body>
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="top">
+			<div class="adove">
+				<div class="income">
+					<h2 class="income_title">
+						収入
+					</h2>
+					<p class="income_mony">
+						¥　100,000,000
+					</p>
+					<div class="content">
+						<div class="in_bar">
+							<div class="bar in_other">
+							</div>
+							<div class="bar in_send">
+							</div>
+							<div class="bar in_sub">
+							</div>
+							<div class="bar in_main">
+							</div>
+						</div>
+						<div class="legend">
+							<h3 class="legend_title">
+								【凡例】
+							</h3>
+							<div>
+								<span class="in_other_legend">
+								</span>
+								その他
+							</div>
+							<div>
+								<span class="in_send_legend">
+								</span>
+								仕送り
+							</div>
+							<div>
+								<span class="in_sub_legend">
+								</span>
+								給与(副業)
+							</div>
+							<div>
+								<span class="in_main_legend">
+								</span>
+								給与(本業)
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="expenditure">
+					<h2 class="expenditure_title">
+						支出
+					</h2>
+					<p class="expenditure_mony">
+						¥　100,000,000
+					</p>
+					<div class="content">
+						<div class="ex_bar">
+							<div class="bar ex_other">
+							</div>
+							<div class="bar ex_tax">
+							</div>
+							<div class="bar ex_entertainment">
+							</div>
+							<div class="bar ex_medical">
+							</div>
+							<div class="bar ex_traffic">
+							</div>
+							<div class="bar ex_rent">
+							</div>
+							<div class="bar ex_phone">
+							</div>
+							<div class="bar ex_water">
+							</div>
+							<div class="bar ex_daily">
+							</div>
+							<div class="bar ex_food">
+							</div>
+						</div>
+						<div class="legend">
+							<h3 class="legend_title">
+								【凡例】
+							</h3>
+							<div>
+								<span class="in_other_legend">
+								</span>
+								その他
+							</div>
+							<div>
+								<span class="ex_tax_legend">
+								</span>
+								税金
+							</div>
+							<div>
+								<span class="ex_entertainment_legend">
+								</span>
+								娯楽費
+							</div>
+							<div>
+								<span class="ex_medical_legend">
+								</span>
+								医療費
+							</div>
+							<div>
+								<span class="ex_traffic_legend">
+								</span>
+								交通費
+							</div>
+							<div>
+								<span class="ex_rent_legend">
+								</span>
+								家賃
+							</div>
+							<div>
+								<span class="ex_phone_legend">
+								</span>
+								通信費
+							</div>
+							<div>
+								<span class="ex_water_legend">
+								</span>
+								水道光熱費
+							</div>
+							<div>
+								<span class="ex_daily_legend">
+								</span>
+								日用品費
+							</div>
+							<div>
+								<span class="ex_food_legend">
+								</span>
+								食費(外食を含む)
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="under">
+				<div class="balance">
+					<h2>
+						残高
+					</h2>
+					<p class="balance_mony">
+						¥　100,000,000
+					</p>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

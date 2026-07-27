@@ -1,0 +1,178 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.register_body {
+	display: flex;
+	background: linear-gradient(135deg, rgba(100, 135, 255, 1), rgba(155, 80, 255, 1));
+	margin: 0;
+	min-height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.register {
+	display: inline-block;
+	background-color: rgba(255, 255, 255, 1);
+	padding: 50px;
+	border-radius: 15px;
+}
+.register_title {
+	display: block;
+	text-align: center;
+}
+.email, .password, .password_confirm {
+	display: block;
+	text-align: left;
+	margin-top: 15px;
+}
+.email_input {
+	display: block;
+	width: 60ch;
+	margin: 0 auto;
+	padding: 7px;
+	border: 1px solid rgba(0, 0, 0, 1);
+	border-radius: 5px;
+}
+.password_action, .password_confirm_action {
+	display: flex;
+	position: relative;
+	align-items: center;
+	width: 50ch;
+	margin: 0 auto;
+}
+.password_input, .password_confirm_input {
+	display: block;
+	width: 100%;
+	padding: 5px;
+	padding-right: 35px;
+	border: 1px solid rgba(0, 0, 0, 1);
+	border-radius: 5px;
+	font-family: sans-serif;
+}
+.password_btn, .password_confirm_btn {
+	position: absolute;
+	right: 5px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	padding: 0;
+	background-image: url('../image/eye_close_icon.jpeg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.password_btn.is_visible, .password_confirm_btn.is_visible {
+	background-image: url('../image/eye_open_icon.jpeg');
+}
+	.register_btn {
+	display: block;
+	width: 20ch;
+	margin: 30px auto 0 auto;
+	padding: 5px;
+	background-color: rgba(0, 255, 65, 1);
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+}
+.password_chek_list {
+	width: 350px;
+	left: 5px;
+	margin: 5px auto 15px auto;
+	font-size: 10px;
+	color: rgba(120, 120, 120, 1);
+}
+.check_item {
+	margin-bottom: 5px;
+	transition: color 0.2s ease;
+}
+icon {
+	display: inline-block;
+	width: 1.2em;
+}
+.icon.valid {
+	color: rgba(0, 180, 0, 1);
+	font-weight: bold;
+}
+.register_btn:disabled {
+	background-color: rgba(190, 190, 190, 1);
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+.back_btn, .back_btn:visited, .back_btn:hover, .back_btn:active {
+	text-decoration: underline;
+	color: rgba(0, 0, 255, 1);
+}
+.link {
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+}
+.error {
+	color: rgba(255, 0, 0, 1);
+	font-size: 15px;
+	margin-top: 5px;
+	min-height: 25px;
+}
+.terms {
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 5px;
+}
+.terms_item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.chk_terms, .chk_privacy, .chk_disclaimer {
+	margin-right: 8px;
+	pointer-events: none;
+}
+.terms_link, .privacy_link, .disclaimer_link {
+	color: rgba(0, 0, 255, 1);
+	text-decoration: underline;
+	cursor: pointer;
+}
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+.modal_content {
+	display: flex;
+	background: rgba(225, 225, 225, 1);
+	padding: 20px;
+	width: 80%;
+	max-width: 1000px;
+	max-height: 80vh;
+	overflow-y: auto;
+	border-radius: 10px;
+	flex-direction: column;
+}
+.modal_title {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.modal_body {
+	font-size: 15px;
+	margin: 15px 0;
+	padding: 10px;
+	border: 1px solid rgba(220, 220, 220, 1);
+	flex-grow: 1;
+}
+.modal_close_btn {
+	display: block;
+	margin: 0 auto;
+	padding: 5px 15px;
+	cursor: pointer;
+}

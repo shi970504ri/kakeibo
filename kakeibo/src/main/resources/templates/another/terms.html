@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/another/terms.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			利用規約
+		</title>
+	</head>
+	<body class="terms_body">
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="term" th:fragment="terms_content">
+			<div class="term_top">
+				<h1 class="term_title">
+					＝利用規約＝
+				</h1>
+				<section class="article">
+					<h2 class="article_title">
+						第１条　適用
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本規約は、本サービスの提供条件及び本サービスの利用に関するユーザーと運営者との間の権利義務関係を定めるものとする。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、本規約の同意した上で本サービスを利用するものとし、本サービスを利用した時点で本規約に同意したものとみなす。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第２条　定義
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本サービスは、収入及び支出の記録・管理・可視化を目的とした家計簿管理システムをいう。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　ユーザーとは、本サービスを利用するために登録を行った個人をいう。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								三
+							</span>
+							<p class="paregraph_content">
+								　アカウントとは、ユーザーを識別するために発行される情報をいう。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第３条　利用登録
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、運営者が定める方法に従い、正確かつ最新の情報を用いて利用登録を行うものとする。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、登録情報に変更が生じた場合、速やかに当該情報を更新するものとする。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								三
+							</span>
+							<p class="paregraph_content">
+								　虚偽の情報、誤記またはなりすましによる登録を行ってはならない。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第４条　アカウント管理
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、自己の管理においてアカウント情報（メールアドレス、パスワード等）を適切に管理するものとする。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　アカウント情報の漏洩、紛失または第三者による不正使用により生じた損害について、運営者は一切の責任を負わない。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								三
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、アカウントの不正利用を認識した場合、直ちに運営者に通知するものとする。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第５条　二段階認証
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本サービスは、セキュリティ向上のため二段階認証を必須とする。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　認証コードは、登録されたメールアドレス及び電話番号（ＳＭＳ）宛に送信される。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								三
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、認証コードを第三者に開示してはならない。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第６条　禁止事項
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、本サービスの利用にあたり、以下の行為を行ってはならない。
+								<span class="item">
+									（１）不正アクセス又はこれを試みる行為
+								</span>
+								<span class="item">
+									（２）ほかのユーザー又は第三者になりすます行為
+								</span>
+								<span class="item">
+									（３）本サービスの運営を妨害する行為又はその恐れのある行為
+								</span>
+								<span class="item">
+									（４）虚偽又は不正確な情報を登録する行為
+								</span>
+								<span class="item">
+									（５）法令又は公序良俗に違反する行為
+								</span>
+								<span class="item">
+									（６）その他、運営者が不適切と判断する行為
+								</span>
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第７条　サービス内容の変更
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　運営者は、必要と判断した場合、ユーザーに事前に通知することなく本サービスの内容を変更又は停止することがある。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　前項による変更又は停止によりユーザーに生じた損害について、運営者は責任を負わない。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第８条　退会
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、所定の手続きによりいつでも大会することができる。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　運営者は、ユーザーが本規約に違反した場合、事前通知なくアカウントの利用停止又は削除を行うことができる。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第９条　責任の制限
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本サービスは、ユーザーの自己責任において利用されるものとする。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　本サービスの利用に関してユーザーに生じた損害について、運営者は故意又は重大な課題がある場合を除き責任を負わない。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="revition_info">
+					<p class="revition_list">
+						制定日・改定日
+					</p>
+					<p class="create">
+						制定日：2026年8月1日
+					</p>
+					<p class="revision">
+						改定日：ー
+					</p>
+				</section>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

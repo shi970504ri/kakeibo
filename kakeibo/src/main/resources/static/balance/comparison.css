@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+body {
+	background:	rgba(150, 150, 150, 1);
+}
+.filter {
+	margin: 20px;
+	padding: 20px;
+	background: rgba(225, 225, 225, 1);
+	border: 1px solid rgba(150, 150, 150, 1);
+}
+.filter_area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+	margin-bottom: 40px;
+}
+#yearSelect, #categorySelect {
+	width: 140px;
+	height: 40px;
+	font-size: 20px;
+	text-align: center;
+}
+.chart_expense {
+	height: 550px;
+	width: 100%;
+}

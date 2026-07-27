@@ -1,0 +1,78 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+body {
+	background:	rgba(150, 150, 150, 1);
+}
+.mypage {
+	margin: 20px;
+	padding: 10px;
+	background: rgba(225, 225, 225, 1);
+}
+.section {
+	width: 70ch;
+	margin: 0 auto 50px;
+	border: 1px solid rgba(50, 50, 50, 1);
+	background: rgba(225, 225, 225, 1);
+}
+.section_title {
+	list-style: none;
+	padding: 10px 0;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	position: relative;
+	cursor: pointer;
+}
+.section_title::-webkit-details-marker {
+	display: none;
+}
+.section_title::after {
+	content: "▼";
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 15px;
+}
+.section:not([open]) section_title::after {
+	content: "▶";
+}
+.content {
+	padding: 20px 60px 30px;
+	text-align: center;
+}
+.form_group {
+	margin-bottom: 20px;
+}
+.mail_title, .tel_title, .password_title {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 15px;
+	text-align: left;
+}
+.mail, .tel, .password {
+	width: 60ch;
+	height: 30px;
+	padding: 5px 10px;
+	font-size: 15px;
+	border: 1px solid rgba(50, 50, 50, 1);
+}
+.register_area {
+	text-align: center;
+	margin-top: 10px;
+}
+.register_btn {
+	padding: 5px 20px;
+	background: rgba(30, 150, 30, 1);
+	color: rgba(255, 255, 255, 1);
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+.register_btn:hover {
+	background: rgb(25, 100, 25);
+}

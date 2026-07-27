@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/category.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			カテゴリ管理
+		</title>
+	</head>
+	<body>
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="category">
+			<h1 class="category_title">
+				カテゴリ追加
+			</h1>
+			<div class="add_category">
+				<input type="text" id="categoryName" placeholder="カテゴリ入力">
+				<select id="categoryType">
+					<option value="income">
+						収入
+					</option>
+					<option value="expense">
+						支出
+					</option>
+					</select>
+				<button id="addBtn">
+					追加
+				</button>
+			</div>
+			<h2 class="category_list_title">
+				カテゴリ一覧
+			</h2>
+			<div class="category_list">
+				<div class="category_section">
+					<h3 class="category_section_title">
+						支出
+					</h3>
+					<ul id="expenseList">
+						<li class="expense_list">
+							<span>
+								食費(外食含む)
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								日用品費
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								水道光熱費
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								通信費
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								家賃
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								交通費
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								医療費
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								娯楽費
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								税金
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="expense_list">
+							<span>
+								その他
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+					</ul>
+				</div>
+				<div class="category_section">
+					<h3 class="category_section_title">
+						収入
+					</h3>
+					<ul id="incomeList">
+						<li class="income_list">
+							<span>
+								給与(本業)
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="income_list">
+							<span>
+								給与(副業)
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="income_list">
+							<span>
+								仕送り
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+						<li class="income_list">
+							<span>
+								その他
+							</span>
+							<button class="delete_btn">
+								削除
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+		<script th:src="@{/balance/category.js}" defer></script>
+	</body>
+</html>

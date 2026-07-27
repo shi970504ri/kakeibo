@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/another/disclaimer.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			免責事項
+		</title>
+	</head>
+	<body class="disclaimer_body">
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="disclaimer" th:fragment="disclaimer_content">
+			<div class="disclaimer_top">
+				<h1 class="disclaimer_title">
+					＝免責事項＝
+				</h1>
+				<section class="article">
+					<h2 class="article_title">
+						第１条　情報の正確性
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本サービスにおいて提供される情報及び機能について、その正確性、完全性及び有用性を保有するものではない。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第２条　損害
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本サービスの利用又は利用不可によりユーザーに生じた損害について、運営者は責任を負わない。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第３条　情報の管理
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　システム障害、通信環境の不具合、保守作業その他の理由により、サービスの全部または一部が停止する場合がある。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　これにより生じた損害について、運営者は責任を負わない。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="article">
+					<h2 class="article_title">
+						第４条　データ
+					</h2>
+					<ol class="paregraph_item">
+						<li class="paregraph">
+							<span class="paregraph_title">
+								一
+							</span>
+							<p class="paregraph_content">
+								　本サービスに保存されたデータの消失、破損又は改ざんについて、運営者は責任を負わない。
+							</p>
+						</li>
+						<li class="paregraph">
+							<span class="paregraph_title">
+								二
+							</span>
+							<p class="paregraph_content">
+								　ユーザーは、必要に応じて自己の責任でデータのバックアップを行うものとする。
+							</p>
+						</li>
+					</ol>
+				</section>
+				<section class="revition_info">
+					<p class="revition_list">
+						制定日・改定日
+					</p>
+					<p class="create">
+						制定日：2026年8月1日
+					</p>
+					<p class="revision">
+						改定日：ー
+					</p>
+				</section>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

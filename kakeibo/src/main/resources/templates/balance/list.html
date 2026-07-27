@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/list.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			収支一覧
+		</title>
+	</head>
+	<body>
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="list_top">
+			<div class="history_card">
+				<div class="card_header">
+					<div class="history_title">
+						2026-04-20 10:00 / 給与
+					</div>
+					<div class="action">
+						<button class="file_btn">
+							画像
+						</button>
+						<a class="edit_btn" th:href="@{/balance/edit}">
+							編集
+						</a>
+						<button class="delete_btn">
+							削除
+						</button>
+					</div>
+				</div>
+				<div class="detail_list">
+					<div class="detail_row">
+						<span class="item_name">
+							給料
+						</span>
+						<span class="item_type">
+							+ ¥100,000,000
+						</span>
+					</div>
+				</div>
+				<div class="summary">
+					<div>
+						収入　¥200,000,000
+					</div>
+					<div>
+						支出　¥0
+					</div>
+					<div>
+						差額　+ ¥200,000,000
+					</div>
+				</div>
+			</div>
+			<div class="pagination">
+				<button class="next_btn">
+					&lt;次へ
+				</button>
+				<div class="page_number">
+					<button class="active">
+						1
+					</button>
+					<button>
+						2
+					</button>
+					<button>
+						3
+					</button>
+				</div>
+				<button class="back_btn">
+					戻る&gt;
+				</button>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/input.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<script th:src="@{/balance/input.js}" defer></script>
+		<title>
+			収支入力
+		</title>
+	</head>
+	<body>
+	<div th:replace="~{header/header :: header}">
+	</div>
+		<form class="input_top" action="/register" method="post" enctype="multipart/form-data">
+			<section class="section">
+				<div class="section_list">
+					<h2 class="section_title">
+						基本情報
+					</h2>
+				</div>
+				<div class="basic_info">
+					<input type="date" name="targetDate">
+					<input type="time" name="targetTime">
+					<input type="text" name="storeName" placeholder="店舗名">
+				</div>
+			</section>
+			<section class="section">
+				<div class="section_list">
+					<h2 class="section_title">
+						詳細情報
+					</h2>
+				</div>
+				<div class="detail_list">
+					<div class="detail_row">
+						<p class="no">
+							No.00001
+						</p>
+						<select name="type00001">
+							<option class="" value="">
+								収入or支出
+							</option>
+							<option value="income">
+								収入
+							</option>
+							<option value="expense">
+								支出
+							</option>
+						</select>
+						<div class="item_amount">
+							<input type="number" name="amount00001" placeholder="金額">
+						</div>
+						<div class="item_category">
+							<input type="text" name="category00001" placeholder="カテゴリ">
+						</div>
+						<div class="item_file">
+							<input type="file" id="file00001" class="file_input" name="file01" hidden accept="image/*" onchange="uploadFile(this)">
+							<button class="file_btn" type="button" onclick="document.getElementById('file00001').click()">
+								画像選択
+							</button>
+						</div>
+						<div class="item_memo">
+							<input type="text" name="memo00001" placeholder="メモ">
+						</div>
+						<div class="item_delete">
+							<button type="button" class="delete_btn" onclick="deleteRow(this)">
+								削除
+							</button>
+						</div>
+					</div>
+					<div class="detail_row">
+						<p class="no">
+							No.00002
+						</p>
+						<select name="type00002">
+							<option class="" value="">
+								収入or支出
+							</option>
+							<option value="income">
+								収入
+							</option>
+							<option value="expense">
+								支出
+							</option>
+						</select>
+						<div class="item_amount">
+							<input type="number" name="amount00002" placeholder="金額">
+						</div>
+						<div class="item_category">
+							<input type="text" name="category00002" placeholder="カテゴリ">
+						</div>
+						<div class="item_file">
+							<input type="file" id="file00002" class="file_input" name="file00002" hidden accept="image/*" onchange="uploadFile(this)">
+							<button class="file_btn" type="button" onclick="document.getElementById('file00002').click()">
+								画像選択
+							</button>
+						</div>
+						<div class="item_memo">
+							<input type="text" name="memo00002" placeholder="メモ">
+						</div>
+						<div class="item_delete">
+							<button type="button" class="delete_btn" onclick="deleteRow(this)">
+								削除
+							</button>
+						</div>
+					</div>
+					<div class="detail_row">
+						<p class="no">
+							No.00003
+						</p>
+						<select name="type00003">
+							<option class="" value="">
+								収入or支出
+							</option>
+							<option value="income">
+								収入
+							</option>
+							<option value="expense">
+								支出
+							</option>
+						</select>
+						<div class="item_amount">
+							<input type="number" name="amount00003" placeholder="金額">
+						</div>
+						<div class="item_category">
+							<input type="text" name="category00003" placeholder="カテゴリ">
+						</div>
+						<div class="item_file">
+							<input type="file" id="file00003" class="file_input" name="file00003" hidden accept="image/*" onchange="uploadFile(this)">
+							<button class="file_btn" type="button" onclick="document.getElementById('file00003').click()">
+								画像選択
+							</button>
+						</div>
+						<div class="item_memo">
+							<input type="text" name="memo00003" placeholder="メモ">
+						</div>
+						<div class="item_delete">
+							<button type="button" class="delete_btn" onclick="deleteRow(this)">
+								削除
+							</button>
+						</div>
+					</div>
+					<div class="detail_row">
+						<p class="no">
+							No.00004
+						</p>
+						<select name="type00004">
+							<option class="" value="">
+								収入or支出
+							</option>
+							<option value="income">
+								収入
+							</option>
+							<option value="expense">
+								支出
+							</option>
+						</select>
+						<div class="item_amount">
+							<input type="number" name="amount00004" placeholder="金額">
+						</div>
+						<div class="item_category">
+							<input type="text" name="category04" placeholder="カテゴリ">
+						</div>
+						<div class="item_file">
+							<input type="file" id="file00004" class="file_input" name="file00004" hidden accept="image/*" onchange="uploadFile(this)">
+							<button class="file_btn" type="button" onclick="document.getElementById('file00004').click()">
+								画像選択
+							</button>
+						</div>
+						<div class="item_memo">
+							<input type="text" name="memo00004" placeholder="メモ">
+						</div>
+						<div class="item_delete">
+							<button type="button" class="delete_btn" onclick="deleteRow(this)">
+								削除
+							</button>
+						</div>
+					</div>
+					<div class="detail_row">
+						<p class="no">
+							No.00005
+						</p>
+						<select name="type00005">
+							<option class="" value="">
+								収入or支出
+							</option>
+							<option value="income">
+								収入
+							</option>
+							<option value="expense">
+								支出
+							</option>
+						</select>
+						<div class="item_amount">
+							<input type="number" name="amount00005" placeholder="金額">
+						</div>
+						<div class="item_category">
+							<input type="text" name="category00005" placeholder="カテゴリ">
+						</div>
+						<div class="item_file">
+							<input type="file" id="file00005" class="file_input" name="file00005" hidden accept="image/*" onchange="uploadFile(this)">
+							<button class="file_btn" type="button" onclick="document.getElementById('file00005').click()">
+								画像選択
+							</button>
+						</div>
+						<div class="item_memo">
+							<input type="text" name="memo00005" placeholder="メモ">
+						</div>
+						<div class="item_delete">
+							<button type="button" class="delete_btn" onclick="deleteRow(this)">
+								削除
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="item_addition">
+					<button type="button" class="addition_btn" onclick="addRows(5)">
+						＋追加（5件）
+					</button>
+				</div>
+			</section>
+			<section class="section">
+				<div class="register_list">
+					<button type="submit" class="register_btn">
+						登録
+					</button>
+				</div>
+			</section>
+		</form>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

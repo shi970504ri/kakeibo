@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/calendar.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			カレンダー
+		</title>
+	</head>
+	<body>
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="calendar">
+			<div class="calendar_header">
+				<button id="prevMonth" class="prev_btn">
+					≪
+				</button>
+				<div id="monthTitle">
+				</div>
+				<button id="nextMonth" class="next_btn">
+					≫
+				</button>
+			</div>
+			<div class="week_header">
+				<div class="sun">
+					日
+				</div>
+				<div class="mon">
+					月
+				</div>
+				<div class="tue">
+					火
+				</div>
+				<div class="wed">
+					水
+				</div>
+				<div class="thu">
+					木
+				</div>
+				<div class="fri">
+					金
+				</div>
+				<div class="sat">
+					土
+				</div>
+			</div>
+			<div id="calendarGrid" class="calendar_grid">
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+		<script th:src="@{/balance/calendar.js}" defer></script>
+	</body>
+</html>

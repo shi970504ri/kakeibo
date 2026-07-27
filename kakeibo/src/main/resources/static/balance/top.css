@@ -1,0 +1,218 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+body {
+	background:	rgba(150, 150, 150, 1);
+}
+.top {
+	padding: 10px;
+	background-color: rgba(150, 150, 150, 1);
+}
+.adove {
+	display: flex;
+	gap: 20px;
+}
+.income, .expenditure {
+	flex: 1;
+	background-color: rgba(255, 255, 255, 1);
+	border: 2px solid rgba(0, 0, 0, 1);
+	padding: 20px;
+	min-height: 600px;
+}
+.income_title, .expenditure_title {
+	text-align: center;
+	margin-bottom: 10px;
+}
+.income_mony, .expenditure_mony {
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+.content {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 70px;
+}
+.bar {
+	width: 140px;
+	height: 20px;
+	border: 2px solid rgba(0, 0, 0, 1);
+	flex-direction: column-reverse;
+}
+.in_other {
+	background-color: rgba(250, 170, 230, 1);
+}
+.in_send {
+	background-color: rgba(255, 110, 200, 1);
+}
+.in_sub {
+	background-color: rgba(255, 180, 110, 1);
+}
+.in_main {
+	background-color: rgba(255, 0, 0, 1);
+}
+.ex_other {
+	background-color: rgba(200, 200, 200, 1);
+}
+.ex_tax {
+	background-color: rgba(125, 125, 125, 1);
+}
+.ex_entertainment {
+	background-color: rgba(215, 125, 255, 1);
+}
+.ex_medical {
+	background-color: rgba(150, 0, 200, 1);
+}
+.ex_traffic {
+	background-color: rgba(75, 0, 150, 1);
+}
+.ex_rent {
+	background-color: rgba(125, 255, 255, 1);
+}
+.ex_phone {
+	background-color: rgba(0, 150, 255, 1);
+}
+.ex_water {
+	background-color: rgba(0, 0, 255, 1);
+}
+.ex_daily {
+	background-color: rgba(0, 185, 0, 1);
+}
+.ex_food {
+	background-color: rgba(0, 75, 10, 1);
+}
+.legend {
+	width: 20ch;
+}
+.legend_title {
+	margin-bottom: 15px;
+}
+.in_other_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(250, 170, 230, 1);
+	margin-right: 5px;
+}
+.in_send_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(255, 110, 200, 1);
+	margin-right: 5px;
+}
+.in_sub_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(255, 180, 110, 1);
+	margin-right: 5px;
+}
+.in_main_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(255, 0, 0, 1);
+	margin-right: 5px;
+}
+.ex_other_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(200, 200, 200, 1);
+	margin-right: 5px;
+}
+.ex_tax_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(125, 125, 125, 1);
+	margin-right: 5px;
+}
+.ex_entertainment_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(215, 125, 255, 1);
+	margin-right: 5px;
+}
+.ex_medical_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(150, 0, 200, 1);
+	margin-right: 5px;
+}
+.ex_traffic_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(75, 0, 150, 1);
+	margin-right: 5px;
+}
+.ex_rent_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(125, 255, 255, 1);
+	margin-right: 5px;
+}
+.ex_phone_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(0, 150, 255, 1);
+	margin-right: 5px;
+}
+.ex_water_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(0, 0, 255, 1);
+	margin-right: 5px;
+}
+.ex_daily_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(0, 185, 0, 1);
+	margin-right: 5px;
+}
+.ex_food_legend::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: rgba(0, 75, 10, 1);
+	margin-right: 5px;
+}
+.under {
+	margin-top: 20px;
+}
+.balance {
+	background-color: rgba(255, 255, 255, 1);
+	border: 2px solid rgba(0, 0, 0, 1);
+	padding: 20px;
+}
+.balance_mony {
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 10px;
+}

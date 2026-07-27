@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<header th:fragment="header">
+			<div class="header_area">
+				<h1 class="header_title">
+					【家計簿管理システム】
+				</h1>
+				<nav>
+					<ul class="header_link_list">
+						<li>
+							<a class="header_link" draggable="false" th:href="@{/balance/top}">
+								＜TOP＞
+							</a>
+						</li>
+						<li>
+							<a class="header_link" draggable="false" th:href="@{/balance/input}">
+								＜収支入力＞
+							</a>
+						</li>
+						<li>
+							<a class="header_link" draggable="false" th:href="@{/balance/list}">
+								＜一覧＞
+							</a>
+						</li>
+						<li>
+							<a class="header_link" draggable="false" th:href="@{/balance/category}">
+								＜カテゴリ＞
+							</a>
+						</li>
+						<li>
+							<a class="header_link" draggable="false" th:href="@{/balance/calendar}">
+								＜カレンダー＞
+							</a>
+						</li>
+						<li>
+							<a class="header_link" draggable="false" th:href="@{/balance/comparison}">
+								＜比較表＞
+							</a>
+						</li>
+						<li>
+							<a class="header_link" draggable="false" th:href="@{/balance/mypage}">
+								＜マイページ＞
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="search_area">
+					<input id="keywordSelect" type="text" placeholder="キーワード検索">
+					<input id="monthSelect" type="month">
+					<button id="searchBtn">
+						検索
+					</button>
+				</div>
+			</div>
+			<script th:src="@{/header/header.js}" defer></script>
+		</header>
+	</body>
+</html>

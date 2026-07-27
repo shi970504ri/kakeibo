@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<footer th;fragment="footer">
+			<div class="footer_link_list">
+				<nav>
+					<ul class="footer_list">
+						<li>
+							<a class="footer_link" draggable="false" th:href="@{/another/terms}">
+								利用規約
+							</a>
+						</li>
+						<li>
+							<a class="footer_link" draggable="false" th:href="@{/another/privacy}">
+								プライバシーポリシー
+							</a>
+						</li>
+						<li>
+							<a class="footer_link" draggable="false" th:href="@{/another/disclaimer}">
+								免職事項
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="footer_title">
+					<p>
+						@2026_shi.970504.ri All rights reserved.
+					</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

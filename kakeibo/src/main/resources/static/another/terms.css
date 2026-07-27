@@ -1,0 +1,73 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+.terms_body {
+	background:	rgba(150, 150, 150, 1);
+}
+.term {
+	background: rgba(225, 225, 225, 1);
+	padding: 25px 40px 40px;
+	margin: 15px;
+	position: relative;
+	text-align: center;
+}
+.term::before {
+	content: "";
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	pointer-events: none;
+}
+.term > * {
+	position: relative;
+	z-index: 1;
+}
+.term_top {
+	display: inline-block;
+	text-align: left;
+}
+.term_title {
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 2px;
+	text-align: center;
+}
+.article {
+	margin-bottom: 20px;
+	margin-left: 30px;
+}
+.paregraph {
+	display: flex;
+	align-items: flex-start;
+	list-style: none;
+	line-height: 1.5;
+	margin-bottom: 5px;
+}
+.paregraph_item {
+	margin-left: 20px;
+}
+.paregraph_title {
+	width: 25px;
+	flex-shrink: 0;
+}
+.paregraph_content {
+	flex: 1;
+	font-size: 15px;
+}
+.item {
+	display: block;
+	padding-left: 25px;
+}
+.revition_info {
+	margin-top: 30px;
+	margin-left: 30px;
+	font-size: 15px;
+}
+.create, .revition {
+	font-size: 15px;
+}

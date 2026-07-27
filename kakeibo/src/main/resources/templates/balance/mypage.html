@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/mypage.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			マイページ
+		</title>
+	</head>
+	<body>
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="mypage">
+			<details class="section">
+				<summary class="section_title">
+					ユーザー情報
+				</summary>
+				<div class="content">
+					<div class="form_group">
+						<label class="mail_title">
+							メール
+						</label>
+						<input class="mail" type="email" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com">
+					</div>
+					<div class="form_group">
+						<label class="tel_title">
+							電話番号
+						</label>
+						<input class="tel" type="tel" value="090-12345678">
+					</div>
+					<div class="register_area">
+						<button class="register_btn">
+							登録
+						</button>
+					</div>
+				</div>
+			</details>
+			<details class="section">
+				<summary class="section_title">
+					セキュリティ情報
+				</summary>
+				<div class="content">
+					<div class="form_group">
+						<label class="tel_title">
+							パスワード
+						</label>
+						<input class="password" type="password" value="Password">
+					</div>
+					<div class="register_area">
+						<button class="register_btn">
+							登録
+						</button>
+					</div>
+				</div>
+			</details>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

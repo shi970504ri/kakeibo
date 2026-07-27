@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/edit.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<script th:src="@{/balance/edit.js}" defer></script>
+		<title>
+			編集
+		</title>
+	</head>
+	<body>
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<form action="/register" method="post" enctype="multipart/form-data">
+			<section class="section">
+				<div class="section_list">
+					<h2 class="section_title">
+						基本情報
+					</h2>
+				</div>
+				<div class="basic_info">
+					<input type="date" name="targetDate" value="2026-05-07">
+					<input type="time" name="targetTime" value="12:45">
+					<input type="text" name="storeName" value="セブンイレブン">
+				</div>
+			</section>
+			<section class="section">
+				<div class="section_list">
+					<h2 class="section_title">
+						詳細情報
+					</h2>
+				</div>
+				<div class="detail_list">
+					<div class="detail_row">
+						<p class="no">
+							No.00001
+						</p>
+						<select name="type00001">
+							<option class="" value="">
+								収入or支出
+							</option>
+							<option value="income" selected>
+								収入
+							</option>
+							<option value="expense">
+								支出
+							</option>
+						</select>
+						<div class="item_amount">
+							<input type="number" name="amount00001" value="50000">
+						</div>
+						<div class="item_category">
+							<input type="text" name="category00001" value="給料">
+						</div>
+						<div class="item_file">
+							<input type="file" id="file00001" class="file_input" name="file01" hidden accept="image/*" onchange="uploadFile(this)">
+							<button class="file_btn" type="button" onclick="showFile('00001')">
+								画像選択済み
+								<br>
+								再選択可能
+							</button>
+						</div>
+						<div class="item_memo">
+							<input type="text" name="memo00001" value="5月分">
+						</div>
+						<div class="item_delete">
+							<button type="button" class="delete_btn" onclick="deleteRow(this)">
+								削除
+							</button>
+						</div>
+					</div>
+					<div class="all_delete">
+						<button type="button" class="all_delete_btn">
+							全削除
+						</button>
+					</div>
+				</div>
+			</section>
+		</form>
+		<div id="fileModal" class="modal">
+			<div class="modal_content">
+				<img id="previewFile" src="" alt="画像">
+				<div class="modal_button">
+					<button type="button" id="reUploadBtn">
+						再登録
+					</button>
+					<button type="button" onclick="closeModail()">
+						閉じる
+					</button>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+	</body>
+</html>

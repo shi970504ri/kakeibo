@@ -1,0 +1,29 @@
+.footer_link {
+	text-decoration: none;
+	padding: 5px;
+	border-radius: 20px;
+	color: rgba(0, 0, 0, 1);
+	font-size: 20px;
+}
+.footer_link:hover {
+	opacity: 0.75;
+	background: rgba(75, 100, 255, 1);
+}
+.footer_link_list {
+	background: rgba(75, 150, 240, 1);
+	padding: 15px 25px;
+}
+.footer_list {
+	display: flex;
+	list-style: none;
+	gap: 50px;
+	margin-bottom: 15px;
+	justify-content: center;
+	text-align: center;
+}
+.footer_title {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+}

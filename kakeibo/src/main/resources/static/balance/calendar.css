@@ -1,0 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+body {
+	background:	rgba(150, 150, 150, 1);
+}
+.calendar {
+	margin: 20px;
+	background: rgba(225, 225, 225, 1);
+	padding: 20px;
+}
+.calendar_header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 40px;
+}
+.prev_btn, .next_btn {
+	width: 50px;
+	height: 55px;
+	font-size: 25px;
+	cursor: pointer;
+}
+#monthTitle {
+	display: flex;
+	width: 200px;
+	height: 55px;
+	background: rgba(255, 255, 255, 1);
+	border: 1px solid rgba(100, 100, 100, 1);
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	font-weight: bold;
+}
+.week_header {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	margin-bottom: 20px;
+}
+.sun, .mon, .tue, .wed, .thu, .fri, .sat {
+	display:flex;
+	width:60px;
+	height:60px;
+	margin:auto;
+	background:rgba(255, 255, 255, 1);
+	border:1px solid #555;
+	justify-content:center;
+	align-items:center;
+	font-size:22px;
+	font-weight:bold;
+}
+.calendar_grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 15px 0;
+}
+.day{
+	display:flex;
+	width:70px;
+	height:70px;
+	margin:auto;
+	justify-content:center;
+	align-items:center;
+	border-radius:50%;
+	font-size:24px;
+	cursor:pointer;
+}
+.other_month{
+	color:rgba(150, 150, 150, 1);
+}
+.sun{
+	color:rgba(255, 0, 0, 1);
+}
+.sat{
+	color:rgba(0, 0, 255, 1);
+}
+
+.sunday{
+	color:rgba(255, 0, 0, 1);
+}
+.saturday{
+	color:rgba(0, 0, 255, 1);
+}
+.today{
+	background:rgba(75, 225, 80, 1);
+}

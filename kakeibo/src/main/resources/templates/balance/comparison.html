@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/header/header.css}">
+		<link rel="stylesheet" th:href="@{/balance/comparison.css}">
+		<link rel="stylesheet" th:href="@{/footer/footer.css}">
+		<title>
+			比較表
+		</title>
+	</head>
+	<body>
+		<div th:replace="~{header/header :: header}">
+		</div>
+		<div class="filter">
+			<div class="filter_area">
+				<select id="yearSelect">
+					<option value="2026">
+						2026年
+					</option>
+					<option value="2025">
+						2025年
+					</option>
+					<option value="2024">
+						2024年
+					</option>
+				</select>
+				<select id="categorySelect">
+					<option value="food">
+						食費
+					</option>
+					<option value="utility">
+						光熱費
+					</option>
+					<option value="rent">
+						家賃
+					</option>
+					<option value="transport">
+						交通費
+					</option>
+				</select>
+			</div>
+			<div class="chart_expense">
+				<canvas id="expenseChart">
+				</canvas>
+			</div>
+		</div>
+		<div th:replace="~{footer/footer :: footer}">
+		</div>
+		<script th:src="@{/balance/comparison.js}" defer></script>
+	</body>
+</html>
