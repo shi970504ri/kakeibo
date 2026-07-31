@@ -19,14 +19,14 @@
 				<label class="email">
 					メールアドレス
 				</label>
-				<input class="email_input" type="email" inputmode="email" autocomplete="off" required>
+				<input class="email_input" type="email" name="email" inputmode="url" autocomplete="username" autocapitalize="off" spellcheck="false" autofocus required>
 				<div class="error email_error">
 				</div>
 				<label class="password">
 					パスワード
 				</label>
 				<div class="password_action">
-					<input class="password_input" type="password" inputmode="latin" autocomplete="new-password" required>
+					<input class="password_input" type="password" name="password" inputmode="url" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="false" required>
 					<button class="password_btn" type="button" onclick="togglePasswordVisibility('.password_input', this)">
 						&nbsp;
 					</button>
@@ -67,7 +67,7 @@
 					パスワード(確認用)
 				</label>
 				<div class="password_confirm_action">
-					<input class="password_confirm_input" type="password" inputmode="latin" autocomplete="new-password" required>
+					<input class="password_confirm_input" type="password" name="password_confirm" inputmode="url" autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false" required>
 					<button class="password_confirm_btn" type="button" onclick="togglePasswordConfirmVisibility('.password_confirm_input', this)">
 						&nbsp;
 					</button>

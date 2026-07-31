@@ -3,53 +3,121 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-body {
+.login_body {
 	display: flex;
-	background:	linear-gradient(135deg,	rgba(100, 135, 255, 1), rgba(155, 80, 255, 1));
+	background: linear-gradient(135deg, rgba(100, 135, 255, 1), rgba(155, 80, 255, 1));
 	margin: 0;
 	min-height: 100vh;
 	justify-content: center;
 	align-items: center;
 }
-h2 {
-	display: block;
-	text-align: center;
-}
-a, a:visited, a:hover, a:active {
-	text-decoration: underline;
-	color: rgba(0, 0, 255, 1);
-}
 .login {
 	display: inline-block;
 	background-color: rgba(255, 255, 255, 1);
-	padding: 20px;
+	margin: 25px;
+	padding: 50px;
 	border-radius: 15px;
 }
-label {
+.login_title {
+	display: block;
+	text-align: center;
+}
+.email, .password {
 	display: block;
 	text-align: left;
 	margin-top: 15px;
 }
-input {
+.email_input {
 	display: block;
+	width: 60ch;
+	margin: 0 auto;
+	padding: 7px;
+	border: 1px solid rgba(0, 0, 0, 1);
+	border-radius: 5px;
+}
+.password_action {
+	display: flex;
+	position: relative;
+	align-items: center;
 	width: 50ch;
 	margin: 0 auto;
+}
+.password_input {
+	display: block;
+	width: 100%;
 	padding: 5px;
-	border: 1px solid  rgba(0, 0, 0, 1);
+	padding-right: 35px;
+	border: 1px solid rgba(0, 0, 0, 1);
 	border-radius: 5px;
+	font-family: sans-serif;
+	ime-mode: disabled;
+}
+.password_btn {
+	position: absolute;
+	right: 5px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	padding: 0;
+	background-image: url('../image/eye_close_icon.jpeg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.password_btn.is_visible {
+	background-image: url('../image/eye_open_icon.jpeg');
 }
 .login_btn {
 	display: block;
 	width: 20ch;
 	margin: 30px auto 0 auto;
 	padding: 5px;
-	background-color: rgba(0, 255, 65, 1);
 	border-radius: 5px;
 	border: none;
 	cursor: pointer;
+	background-color: rgba(0, 180, 0, 1);
+	color: rgba(255, 255, 255, 1);
+	font-weight: bold;
+	transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.password_check_list {
+	width: 350px;
+	left: 5px;
+	margin: 5px auto 15px auto;
+	font-size: 10px;
+	color: rgba(120, 120, 120, 1);
+}
+.check_item {
+	margin-bottom: 5px;
+	transition: color 0.2s ease;
+}
+icon {
+	display: inline-block;
+	width: 1.2em;
+}
+.icon.valid {
+	color: rgba(0, 180, 0, 1);
+	font-weight: bold;
+}
+.login_btn:disabled {
+	background-color: rgba(190, 190, 190, 1);
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+.back_btn, .back_btn:visited, .back_btn:hover, .back_btn:active {
+	text-decoration: underline;
+	color: rgba(0, 0, 255, 1);
 }
 .link {
 	display: block;
 	margin-top: 10px;
 	text-align: center;
+}
+.error {
+	color: rgba(255, 0, 0, 1);
+	font-size: 15px;
+	margin-top: 5px;
+	min-height: 25px;
 }

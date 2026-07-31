@@ -98,7 +98,7 @@ confirmInput.addEventListener('blur', () => {
 	confirmErrorDiv.textContent = checkConfirm();
 });
 emailInput.addEventListener('input', () => {
-	emailErrorDiv.textContent = cjeckEmail();
+	emailErrorDiv.textContent = checkEmail();
 	checkAllAgreed(); 
 });
 ['input', 'keyup'].forEach(eventType => {
@@ -123,7 +123,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
 	const confErr = checkConfirm();
 	emailErrorDiv.textContent = emailErr;
 	confirmErrorDiv.textContent = confErr;
-	if (emailErr !== "" || isPasswordValid !== "" || confErr !== "") {
+	if (emailErr !== "" || !isPasswordValid || confErr !== "") {
 		event.preventDefault();
 	}
 });
@@ -147,3 +147,24 @@ function togglePasswordConfirmVisibility(inputSelector, btnElement) {
 		btnElement.classList.remove('is_visible');
 	}
 }
+function convertToHalfWidth(str) {
+	return str.replace(/[！-～]/g,function(s){
+		return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
+	}).replace(/”/g, '"').replace(/’/g, "'").replace(/‘/g, "`").replace(/￥/g, '\\');
+}
+[passwordInput, confirmInput].forEach(input => {
+	if (!input) return;
+	input.addEventListener('input', (e) => {
+		let converted = convertToHalfWidth(e.target.value);
+		if (e.target.value !== converted) {
+			e.target.value = converted;
+		}
+	});
+	input.addEventListener('focus', function() {
+		const originalType = this.type;
+		this.type = 'text';
+		setTimeout(() => {
+			this.type = originalType;
+		}, 10);
+	});
+});

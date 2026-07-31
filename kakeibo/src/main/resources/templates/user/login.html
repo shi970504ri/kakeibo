@@ -7,31 +7,37 @@
 			ログイン
 		</title>
 	</head>
-	<body>
+	<body class="login_body">
 		<div class="login">
-			<h2>
+			<h2 class="login_title">
 				ログイン
 			</h2>
-			<form th:action="@{/user/login}" method="post">
-				<p class="error" th:if="${error}" th:text="${error}">
-				</p>
-				<label>
+			<form autocomplete="off" method="post">
+				<label class="email">
 					メールアドレス
 				</label>
-				<input type="text" required>
-				<label>
+				<input class="email_input" type="email" name="email" inputmode="url" autocomplete="username" autocapitalize="off" spellcheck="false" autofocus required>
+				<div class="error email_error">
+				</div>
+				<label class="password">
 					パスワード
 				</label>
-				<input type="password"	required>
-				<button class="login_btn" type="submit">
+				<div class="password_action">
+					<input class="password_input" type="password" name="password" inputmode="url" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+					<button class="password_btn" type="button" onclick="togglePasswordVisibility('.password_input', this)">
+						&nbsp;
+					</button>
+				</div>
+				<button class="login_btn" id="submit_btn" type="submit" disabled>
 					ログイン
 				</button>
 			</form>
 			<div class="link">
-				<a th:href="@{/user/register}">
-					新規登録はこちら
+				<a class="back_btn" href="login">
+					戻る
 				</a>
 			</div>
 		</div>
+		<script th:src="@{/user/login.js}" defer></script>
 	</body>
-</html> 
+</html>
