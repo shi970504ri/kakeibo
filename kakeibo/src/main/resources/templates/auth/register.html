@@ -12,14 +12,14 @@
 			<h2>
 				二段階認証
 			</h2>
-			<form th:action="@{/auth/register}" th:object=${registerAuthForm} autocomplete="off" method="post">
+			<form action="" object="" autocomplete="off" method="post">
 				<label>
 					メールアドレスの認証コード
 				</label>
-				<input type="text" th:field="*{emailCode}" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" required>
-				<p th:if="${message}" th:text="${message}">
+				<input type="text" field="" inputmode="numeric" pattern="" maxlength="6" autocomplete="off" required>
+				<p if="" text="">
 				</p>
-				<p th:if="${error}" th:text="${error}">
+				<p if="error" text="error">
 				</p>
 				<button class="auth_btn" type="submit" name="action" value="verify">
 					認証
