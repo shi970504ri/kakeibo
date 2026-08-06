@@ -7,27 +7,28 @@
 			二段階認証
 		</title>
 	</head>
-	<body>
-		<div class="login">
-			<h2>
+	<body class="register_body">
+		<div class="auth">
+			<h2 class="auth_title">
 				二段階認証
 			</h2>
-			<form action="" object="" autocomplete="off" method="post">
-				<label>
+			<form class="register_form" th:action="@{/auth/register}" autocomplete="off" method="post">
+				<label class="register_form">
 					メールアドレスの認証コード
 				</label>
-				<input type="text" field="" inputmode="numeric" pattern="" maxlength="6" autocomplete="off" required>
-				<p if="" text="">
+				<input class="register_input" type="text" name="code" inputmode="numeric" maxlength="6" autocomplete="off" required>
+				<p class="message" th:if="${message}" th:text="${message}">
 				</p>
-				<p if="error" text="error">
+				<p class="error" th:if="${error}" th:text="${error}">
 				</p>
-				<button class="auth_btn" type="submit" name="action" value="verify">
+				<button class="auth_btn" id="auth_btn" type="submit" name="action" value="verify" disabled>
 					認証
 				</button>
-				<button class="resend_btn" type="submit" name="action" value="resend">
+				<button class="resend_btn" type="submit" name="action" value="resend" formnovalidate>
 					認証コードを再送する
 				</button>
 			</form>
 		</div>
+		<script th:src="@{/auth/register.js}" defer></script>
 	</body>
 </html>

@@ -33,7 +33,7 @@ public class AuthCodesEntity {
 	@Column(name = "code", nullable = false, unique = true, length = 6)
 	private String code;
 	/*
-	 * email/sms
+	 * email
 	 */
 	@Column(name = "purpose", nullable = false, length = 20)
 	private String purpose;
@@ -57,11 +57,13 @@ public class AuthCodesEntity {
 	 */
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
+	/*
+	 * 更新日時
+	 */
+	@Column(name = "updated_at", nullable = false)
+	private LocalDateTime updatedAt;
 	public AuthCodesEntity() {
 	}
-	/*
-	 * get＆set
-	 */
 	public Integer getAuthCodeId() {
 		return authCodeId;
 	}
@@ -109,5 +111,11 @@ public class AuthCodesEntity {
 	}
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
+	}
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }

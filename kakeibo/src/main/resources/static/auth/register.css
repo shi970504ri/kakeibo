@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 	user-select: none;
 }
-body {
+.register_body {
 	display: flex;
 	background:	linear-gradient(135deg,	rgba(100, 135, 255, 1), rgba(155, 80, 255, 1));
 	margin: 0;
@@ -12,26 +12,22 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-h2 {
-	display: block;
-	text-align: center;
-}
-a, a:visited, a:hover, a:active {
-	text-decoration: underline;
-	color: rgba(0, 0, 255, 1);
-}
-.login {
+.auth {
 	display: inline-block;
 	background-color: rgba(255, 255, 255, 1);
 	padding: 20px;
 	border-radius: 15px;
 }
-label {
+.auth_title {
+	display: block;
+	text-align: center;
+}
+.register_form {
 	display: block;
 	text-align: left;
 	margin-top: 15px;
 }
-input {
+.register_input {
 	display: block;
 	width: 50ch;
 	margin: 0 auto;
@@ -58,4 +54,15 @@ input {
 	border: none;
 	cursor: pointer;
 	align-items: center;
+}
+.auth_btn:disabled {
+	background-color: rgba(190, 190, 190, 1);
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+.message {
+	color: rgba(0, 255, 0, 1);
+}
+.error {
+	color: rgba(255, 0, 0, 1);
 }

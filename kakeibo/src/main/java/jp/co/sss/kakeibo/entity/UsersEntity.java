@@ -25,11 +25,6 @@ public class UsersEntity {
 	@Column(name = "email", nullable = false, unique = true, length = 255)
 	private String email;
 	/*
-	 * SMS
-	 */
-	@Column(name = "tel", nullable = false, unique = true, length = 11)
-	private String tel;
-	/*
 	 * パスワード
 	 */
 	@Column(name = "password", nullable = false, length = 255)
@@ -60,12 +55,6 @@ public class UsersEntity {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
 	}
 	public String getPassword() {
 		return password;
