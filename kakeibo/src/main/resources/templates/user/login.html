@@ -12,7 +12,9 @@
 			<h2 class="login_title">
 				ログイン
 			</h2>
-			<form autocomplete="off" method="post">
+			<div class="error" th:if="${error}" th:text="${error}">
+			</div>
+			<form autocomplete="off" method="post" th:action="@{/user/login}">
 				<label class="email">
 					メールアドレス
 				</label>
@@ -33,8 +35,8 @@
 				</button>
 			</form>
 			<div class="link">
-				<a class="back_btn" href="login">
-					戻る
+				<a class="new_btn" href="register">
+					新規作成
 				</a>
 			</div>
 		</div>

@@ -14,7 +14,7 @@
 			</h2>
 			<form class="register_form" th:action="@{/auth/register}" autocomplete="off" method="post">
 				<label class="register_form">
-					メールアドレスの認証コード
+					認証コード
 				</label>
 				<input class="register_input" type="text" name="code" inputmode="numeric" maxlength="6" autocomplete="off" required>
 				<p class="message" th:if="${message}" th:text="${message}">

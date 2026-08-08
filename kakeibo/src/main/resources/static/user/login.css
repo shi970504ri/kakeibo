@@ -107,7 +107,7 @@ icon {
 	cursor: not-allowed;
 	opacity: 0.5;
 }
-.back_btn, .back_btn:visited, .back_btn:hover, .back_btn:active {
+.new_btn, .new_btn:visited, .new_btn:hover, .new_btn:active {
 	text-decoration: underline;
 	color: rgba(0, 0, 255, 1);
 }

@@ -37,7 +37,11 @@ public class AuthService {
 		mailSender.send(message);
 	}
 	@Transactional
-	public boolean completeRegistration(UsersEntity tempUser, String sessionCode, String inputCode, LocalDateTime expireTime) {
+	public boolean completeRegistration(
+		UsersEntity tempUser,
+		String sessionCode,
+		String inputCode, LocalDateTime expireTime
+	) {
 		if (sessionCode == null || !sessionCode.equals(inputCode)) {
 			return false;
 		}
@@ -52,6 +56,19 @@ public class AuthService {
 		tempUser.setCreatedAt(now);
 		tempUser.setUpdatedAt(now);
 		usersRepository.save(tempUser);
+		return true;
+	}
+	public boolean verifyLoginAuthCode(
+		String sessionCode,
+		String inputCode,
+		LocalDateTime expireTime
+	) {
+		if (sessionCode == null || !sessionCode.equals(inputCode)) {
+			return false;
+		}
+		if (expireTime == null || LocalDateTime.now().isAfter(expireTime)) {
+			return false;
+		}
 		return true;
 	}
 }
