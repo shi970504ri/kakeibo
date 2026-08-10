@@ -16,20 +16,20 @@
 			<h1 class="category_title">
 				カテゴリ追加
 			</h1>
-			<div class="add_category">
-				<input type="text" id="categoryName" placeholder="カテゴリ入力">
-				<select id="categoryType">
-					<option value="income">
-						収入
-					</option>
+			<form id="addCategoryForm" class="add_category">
+				<input type="text" id="categoryName" name="name" placeholder="カテゴリ入力" required>
+				<select id="categoryType" name="type">
 					<option value="expense">
 						支出
 					</option>
-					</select>
-				<button id="addBtn">
+					<option value="income">
+						収入
+					</option>
+				</select>
+				<button id="addBtn" type="submit">
 					追加
 				</button>
-			</div>
+			</form>
 			<h2 class="category_list_title">
 				カテゴリ一覧
 			</h2>
@@ -39,86 +39,6 @@
 						支出
 					</h3>
 					<ul id="expenseList">
-						<li class="expense_list">
-							<span>
-								食費(外食含む)
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								日用品費
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								水道光熱費
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								通信費
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								家賃
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								交通費
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								医療費
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								娯楽費
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								税金
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="expense_list">
-							<span>
-								その他
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
 					</ul>
 				</div>
 				<div class="category_section">
@@ -126,38 +46,6 @@
 						収入
 					</h3>
 					<ul id="incomeList">
-						<li class="income_list">
-							<span>
-								給与(本業)
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="income_list">
-							<span>
-								給与(副業)
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="income_list">
-							<span>
-								仕送り
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
-						<li class="income_list">
-							<span>
-								その他
-							</span>
-							<button class="delete_btn">
-								削除
-							</button>
-						</li>
 					</ul>
 				</div>
 			</div>

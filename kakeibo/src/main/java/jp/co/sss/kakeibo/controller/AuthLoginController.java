@@ -62,7 +62,7 @@ public class AuthLoginController {
 		session.removeAttribute("tempUser");
 		session.removeAttribute("authCode");
 		session.removeAttribute("expireTime");
-		session.setAttribute("user", tempUser);
+		session.setAttribute("userId", tempUser.getUserId());
 		return "redirect:/balance/top";
 	}
 }

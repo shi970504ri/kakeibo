@@ -51,4 +51,9 @@ public class LoginController {
 		authService.sendEmail(user.getEmail(), authCode);
 		return "redirect:/auth/login";
 	}
+	@GetMapping("/user/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/user/login";
+	}
 }

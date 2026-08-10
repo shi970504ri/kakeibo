@@ -23,7 +23,8 @@ public class WebConfig implements WebMvcConfigurer {
 			"/balance/calendar",
 			"/balance/compaison",
 			"/balance/category",
-			"/balance/mupage"
+			"/balance/mypage",
+			"/api/**"
 		);
 	}
 }

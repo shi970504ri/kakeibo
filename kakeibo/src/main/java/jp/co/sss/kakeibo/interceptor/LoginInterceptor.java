@@ -10,17 +10,15 @@ import org.springframework.web.servlet.HandlerInterceptor;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 	@Override
-	public boolean preHandle(
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Object handler) throws Exception {
-		HttpSession session = request.getSession();
-		String requestUri = request.getRequestURI();
-		String modalParam = request.getParameter("modal");
-		if ((requestUri.endsWith("/another/terms") || requestUri.endsWith("/another/privacy") || requestUri.endsWith("/another/disclaimer")) && "true".equals(modalParam)) {
-			return true;
-		}
-		if (session.getAttribute("user") == null) {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		HttpSession session = request.getSession(false);
+		Object loginUser = (session != null) ? session.getAttribute("userId") : null;
+		if (loginUser == null) {
+			String requestURI = request.getRequestURI();
+			if (requestURI.contains("/api/")) {
+				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+				return false;
+			}
 			response.sendRedirect(request.getContextPath() + "/user/login");
 			return false;
 		}

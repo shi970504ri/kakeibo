@@ -10,9 +10,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "categories")
+@Table(
+	name = "categories",
+			uniqueConstraints = {
+			@UniqueConstraint(columnNames = {"user_id", "type", "name"})
+	}
+)
 public class CategoriesEntity {
 	/*
 	 * カテゴリ名識別
@@ -24,13 +32,14 @@ public class CategoriesEntity {
 	/*
 	 * 対象ユーザー
 	 */
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
 	private UsersEntity user;
 	/*
 	 * カテゴリ名
 	 */
-	@Column(name = "name", nullable = false, unique = true, length = 255)
+	@Column(name = "name", nullable = false, length = 255)
 	private String name;
 	/*
 	 * 収入or支出

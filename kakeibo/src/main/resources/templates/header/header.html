@@ -6,9 +6,15 @@
 	<body>
 		<header th:fragment="header">
 			<div class="header_area">
-				<h1 class="header_title">
-					【家計簿管理システム】
-				</h1>
+				<div class="header_top">
+					<h1 class="header_title">
+						【家計簿管理システム】
+					</h1>
+					<a class="logout_btn" th:href="@{/user/logout}" onclick="return confirm('ログアウトしますか？');">
+						ログアウト
+					</a>
+				</div>
+				
 				<nav>
 					<ul class="header_link_list">
 						<li>
