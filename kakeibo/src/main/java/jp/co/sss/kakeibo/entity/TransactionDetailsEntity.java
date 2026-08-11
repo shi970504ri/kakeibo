@@ -1,6 +1,5 @@
 package jp.co.sss.kakeibo.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -26,7 +25,7 @@ public class TransactionDetailsEntity {
 	 * 取引識別
 	 */
 	@ManyToOne
-	@JoinColumn(name = "transaction_id", nullable = false, unique = true)
+	@JoinColumn(name = "transaction_id", nullable = false)
 	private TransactionsEntity transaction;
 	/*
 	 * カテゴリ識別
@@ -40,10 +39,15 @@ public class TransactionDetailsEntity {
 	@Column(name = "type", nullable = false, length = 10)
 	private String type;
 	/*
+	 * 商品名or項目
+	 */
+	@Column(name = "item_name", nullable = false, length = 255)
+	private String itemName;
+	/*
 	 * 金額
 	 */
 	@Column(name = "amount", nullable = false, precision = 12, scale = 2)
-	private BigDecimal amount;
+	private Integer amount;
 	/*
 	 * 画像
 	 */
@@ -93,10 +97,16 @@ public class TransactionDetailsEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public BigDecimal getAmount() {
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	public Integer getAmount() {
 		return amount;
 	}
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 	public String getFile() {
@@ -123,4 +133,5 @@ public class TransactionDetailsEntity {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
 }

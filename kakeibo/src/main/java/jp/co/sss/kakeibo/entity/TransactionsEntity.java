@@ -39,6 +39,11 @@ public class TransactionsEntity {
 	@Column(name = "store_name", nullable = false, length = 255)
 	private String storeName;
 	/*
+	 * 商品名or項目
+	 */
+	@Column(name = "item_name", nullable = false, length = 255)
+	private String itemName;
+	/*
 	 * 画像
 	 */
 	@Column(name = "file", nullable = false, unique = true, length = 255)
@@ -86,6 +91,12 @@ public class TransactionsEntity {
 	}
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
+	}
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 	public String getFile() {
 		return file;
