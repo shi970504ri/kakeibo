@@ -16,7 +16,7 @@
 				<label class="login_form">
 					認証コード
 				</label>
-				<input class="login_input" type="text" name="code" inputmode="numeric" maxlength="6" autocomplete="off" required>
+				<input class="login_input" type="text" name="code" inputmode="numeric" maxlength="6" autocomplete="off" autofocus required>
 				<p class="message" th:if="${message}" th:text="${message}">
 				</p>
 				<p class="error" th:if="${error}" th:text="${error}">

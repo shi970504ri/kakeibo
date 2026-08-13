@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DisclaimerController {
-	@RequestMapping(path = "/another/disclaimer")
+	@RequestMapping("/another/disclaimer")
 	public String disclaimerShow(@RequestParam(name = "modal", defaultValue = "false") boolean modal) {
 		if (modal) {
 			return "another/disclaimer :: disclaimer_content";

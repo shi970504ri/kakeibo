@@ -5,168 +5,250 @@
 	user-select: none;
 }
 body {
-	background: rgba(150, 150, 150, 1);
+	background-color: rgba(241, 245, 249, 1);
+	color: rgba(51, 65, 85, 1);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	min-height: 100vh;
 }
-.input_top {
-	max-width: 1100px;
-	margin: auto;
+.main_container {
+	max-width: 1200px;
+	margin: 30px auto 60px;
+	padding: 0 20px;
+}
+.input_form {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
 }
 .error_message_box {
-	color: rgba(255, 0, 0, 1);
-	background: rgba(255, 230, 230, 1);
-	padding: 10px;
-	border-radius: 5px;
-	margin-bottom: 20px;
-	font-weight: bold;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: rgba(153, 27, 27, 1);
+	background-color: rgba(254, 242, 242, 1);
+	border: 1px solid rgba(254, 202, 202, 1);
+	padding: 14px 20px;
+	border-radius: 8px;
+	font-weight: 600;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
-.section {
-	margin-top: 40px;
-	margin-bottom: 40px;
+.card_section {
+	background: rgba(255, 255, 255, 1);
+	border-radius: 12px;
+	padding: 28px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+	border: 1px solid rgba(226, 232, 240, 1);
+}
+.section_header {
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+	border-bottom: 2px solid rgba(241, 245, 249, 1);
 }
 .section_title {
-	background: rgba(255, 255, 255, 1);
-	border-left: 10px solid rgba(125, 225, 250, 1);
-	padding: 5px 20px;
-	font-size: 35px;
-	margin-bottom: 20px;
-}
-
-/* 必須・任意バッジの表示 */
-.basic_info {
+	font-size: 20px;
+	font-weight: 700;
+	color: rgba(15, 23, 42, 1);
 	display: flex;
-	gap: 15px;
+	align-items: center;
+	gap: 8px;
+}
+.section_title::before {
+	content: '';
+	display: inline-block;
+	width: 6px;
+	height: 20px;
+	background-color: rgba(2, 132, 199, 1);
+	border-radius: 3px;
+}
+.basic_info_grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
 }
 .field_group {
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	gap: 8px;
 }
 .field_group label {
-	color: rgba(255, 255, 255, 1);
+	color: rgba(71, 85, 105, 1);
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+}
+.field_store {
+	flex: 1;
+	min-width: 260px;
 }
 .badge {
 	font-size: 11px;
-	padding: 2px 6px;
-	border-radius: 3px;
-	margin-left: 4px;
+	padding: 2px 8px;
+	border-radius: 12px;
+	margin-left: 6px;
+	font-weight: 600;
 }
 .badge.required {
-	background-color: rgba(255, 75, 75, 1);
-	color: rgba(255, 255, 255, 1);
+	background-color: rgba(254, 226, 226, 1);
+	color: rgba(220, 38, 38, 1);
 }
-.badge.optional {
-	background-color: rgba(140, 140, 140, 1);
-	color: rgba(255, 255, 255, 1);
+input[type="date"],
+input[type="time"],
+input[type="text"],
+input[type="number"],
+select {
+	height: 42px;
+	border: 1px solid rgba(203, 213, 225, 1);
+	border-radius: 6px;
+	padding: 0 12px;
+	font-size: 14px;
+	color: rgba(30, 41, 59, 1);
+	background-color: rgba(255, 255, 255, 1);
+	transition: all 0.2s ease;
+	outline: none;
+	width: 100%;
+}
+input:focus, select:focus {
+	border-color: rgba(2, 132, 199, 1);
+	box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+.basic_info_grid input[type="date"] { width: 170px; }
+.basic_info_grid input[type="time"] { width: 140px; }
+.detail_container {
+	overflow-x: auto;
 }
 
-.basic_info input {
-	height: 40px;
-	border: none;
-	border-radius: 5px;
-	padding: 0 10px;
-	font-size: 15px;
+/* ★ 8列から7列へ変更し、各列の幅を再調整（No. / 商品名 / 金額 / カテゴリ / 画像 / メモ / 操作） */
+.detail_header {
+	display: grid;
+	grid-template-columns: 65px 1.2fr 130px 160px 130px 1fr 70px;
+	gap: 10px;
+	padding: 8px 12px;
+	background-color: rgba(248, 250, 252, 1);
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	color: rgba(100, 116, 139, 1);
+	margin-bottom: 10px;
+	align-items: center;
+	min-width: 900px;
 }
-.basic_info input[type="date"] { width: 170px; }
-.basic_info input[type="time"] { width: 130px; }
-.basic_info input[type="text"] { width: 350px; }
-
+.req_mark {
+	color: rgba(220, 38, 38, 1);
+}
 .detail_list {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	min-width: 900px;
 }
+
+/* ★ 8列から7列へ変更 */
 .detail_row {
 	display: grid;
-	grid-template-columns: 90px 130px 140px 160px 110px 300px 80px;
+	grid-template-columns: 65px 1.2fr 130px 160px 130px 1fr 70px;
 	gap: 10px;
 	align-items: center;
-}
-.no {
-	display: flex;
-	height: 40px;
-	padding-left: 5px;
 	background: rgba(255, 255, 255, 1);
-	border-radius: 5px;
-	align-items: center;
-	font-size: 15px;
+	padding: 6px 12px;
+	border-radius: 8px;
+	border: 1px solid rgba(226, 232, 240, 1);
+	transition: border-color 0.2s;
 }
-.detail_row select {
-	height: 40px;
-	background: rgba(255, 255, 255, 1);
-	border-radius: 5px;
-	font-size: 15px;
-	border: none;
-	padding: 0 5px;
+.detail_row:hover {
+	border-color: rgba(203, 213, 225, 1);
 }
-.item_amount, .item_category, .item_file, .item_memo, .item_delete {
+.no_badge {
 	display: flex;
-	height: 40px;
 	align-items: center;
-}
-.item_amount input[type="number"], .item_memo input[type="text"] {
-	height: 100%;
-	width: 100%;
-	padding-left: 10px;
-	border: none;
-	border-radius: 5px;
-	font-size: 15px;
-}
-.item_category select {
-	width: 100%;
+	justify-content: center;
+	height: 32px;
+	background-color: rgba(241, 245, 249, 1);
+	color: rgba(100, 116, 139, 1);
+	font-weight: 700;
+	font-size: 12px;
+	border-radius: 4px;
 }
 .file_btn {
 	width: 100%;
-	height: 40px;
-	border: none;
-	border-radius: 5px;
-	background: rgba(255, 255, 255, 1);
+	height: 42px;
+	border: 1px dashed rgba(203, 213, 225, 1);
+	border-radius: 6px;
+	background-color: rgba(248, 250, 252, 1);
+	color: rgba(71, 85, 105, 1);
+	font-size: 13px;
+	font-weight: 500;
 	cursor: pointer;
+	transition: all 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
 }
 .file_btn:hover {
-	opacity: 0.75;
+	background-color: rgba(241, 245, 249, 1);
+	border-color: rgba(148, 163, 184, 1);
+	color: rgba(15, 23, 42, 1);
 }
 .delete_btn {
-	height: 100%;
+	height: 42px;
 	width: 100%;
-	background: rgba(255, 0, 0, 1);
-	color: rgba(255, 255, 255, 1);
-	border: none;
-	border-radius: 5px;
-	font-size: 15px;
+	background-color: rgba(255, 241, 242, 1);
+	color: rgba(225, 29, 72, 1);
+	border: 1px solid rgba(254, 205, 211, 1);
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 600;
 	cursor: pointer;
+	transition: all 0.2s;
 }
 .delete_btn:hover {
-	opacity: 0.75;
+	background-color: rgba(255, 228, 230, 1);
+	color: rgba(190, 18, 60, 1);
 }
 .item_addition {
-	padding-top: 20px;
+	margin-top: 16px;
 }
 .addition_btn {
 	width: 100%;
-	height: 40px;
-	background: rgba(125, 225, 250, 1);
-	border: none;
-	border-radius: 5px;
+	height: 44px;
+	background-color: rgba(240, 249, 255, 1);
+	border: 1px dashed rgba(125, 211, 252, 1);
+	color: rgba(2, 132, 199, 1);
+	border-radius: 8px;
 	cursor: pointer;
-	font-weight: bold;
+	font-weight: 700;
+	font-size: 14px;
+	transition: all 0.2s;
 }
-.register_list {
+.addition_btn:hover {
+	background-color: rgba(224, 242, 254, 1);
+	border-style: solid;
+}
+.form_actions {
 	display: flex;
-	width: 100%;
 	justify-content: center;
+	margin-top: 10px;
 }
 .register_btn {
-	width: 150px;
-	height: 45px;
-	background: rgba(125, 225, 250, 1);
+	width: 240px;
+	height: 50px;
+	background-color: rgba(2, 132, 199, 1);
+	color: rgba(255, 255, 255, 1);
 	border: none;
-	border-radius: 5px;
+	border-radius: 8px;
 	cursor: pointer;
-	font-size: 18px;
-	font-weight: bold;
+	font-size: 16px;
+	font-weight: 700;
+	box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.3);
+	transition: all 0.2s;
 }
-.addition_btn:hover, .register_btn:hover {
-	opacity: 0.75;
+.register_btn:hover {
+	background-color: rgba(3, 105, 161, 1);
+	transform: translateY(-1px);
+	box-shadow: 0 6px 12px -2px rgba(2, 132, 199, 0.4);
+}
+
+.register_btn:active {
+	transform: translateY(0);
 }

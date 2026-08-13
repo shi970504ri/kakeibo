@@ -31,7 +31,7 @@ public class TransactionDetailsEntity {
 	 * カテゴリ識別
 	 */
 	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false, unique = true)
+	@JoinColumn(name = "category_id", nullable = false)
 	private CategoriesEntity category;
 	/*
 	 * 収入or支出
@@ -133,5 +133,4 @@ public class TransactionDetailsEntity {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
 }

@@ -29,7 +29,7 @@ public class AuthLoginController {
 		}
 		return "auth/login";
 	}
-	@PostMapping(path = "/auth/login")
+	@PostMapping("/auth/login")
 	public String authLoginProcess(
 		@RequestParam(value = "code", required = false) String code,
 		@RequestParam(value = "action", defaultValue = "verify") String action,

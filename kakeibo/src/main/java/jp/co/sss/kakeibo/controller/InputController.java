@@ -55,7 +55,7 @@ public class InputController {
 		model.addAttribute("transactionForm", form);
 		return "balance/input";
 	}
-	@PostMapping(path = "/register")
+	@PostMapping("/balance/save")
 	public String register(@ModelAttribute TransactionForm form, HttpSession session, Model model) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		if (userId == null) {
@@ -65,15 +65,14 @@ public class InputController {
 		List<TransactionDetailForm> validDetails = new ArrayList<>();
 		for (int i = 0; i < form.getDetails().size(); i++) {
 			TransactionDetailForm detail = form.getDetails().get(i);
-			boolean hasType = detail.getType() != null && !detail.getType().isBlank();
 			boolean hasItemName = detail.getItemName() != null && !detail.getItemName().isBlank();
 			boolean hasAmount = detail.getAmount() != null;
 			boolean hasCategory = detail.getCategoryId() != null;
 			boolean hasFile = detail.getFile() != null && !detail.getFile().isBlank();
 			boolean hasMemo = detail.getMemo() != null && !detail.getMemo().isBlank();
-			boolean hasAnyInput = hasType || hasItemName || hasAmount || hasCategory || hasFile || hasMemo;
+			boolean hasAnyInput = hasItemName || hasAmount || hasCategory || hasFile || hasMemo;
 			if (hasAnyInput) {
-				if (!hasType || !hasItemName || !hasAmount || !hasCategory || !hasFile) {
+				if (!hasItemName || !hasAmount || !hasCategory || !hasFile) {
 					List<CategoriesEntity> categories = categoriesRepository.findByUser(user);
 					model.addAttribute("categories", categories);
 					model.addAttribute("errorMessage", String.format("No.%05d の必須項目が入力されていません。", i + 1));
@@ -94,7 +93,6 @@ public class InputController {
 			timeStr = timeStr.substring(0, 4);
 		}
 		String storeName = form.getStoreName() != null ? form.getStoreName() : "";
-		String baseFileName = dateStr + "_" + timeStr + "_" + storeName;
 		Path uploadDir = Paths.get("uploads/");
 		for (int i = 0; i < validDetails.size(); i++) {
 			TransactionDetailForm detailForm = validDetails.get(i);
@@ -105,7 +103,8 @@ public class InputController {
 				if (dotIndex != -1) {
 					ext = originalFile.substring(dotIndex);
 				}
-				String newFileName = baseFileName + (validDetails.size() > 1 ? "_" + (i + 1) : "") + ext;
+				String itemName = detailForm.getItemName() != null ? detailForm.getItemName() : "";
+				String newFileName = dateStr + "_" + timeStr + "_" + storeName + "_" + itemName + ext;
 				Path oldPath = uploadDir.resolve(originalFile);
 				Path newPath = uploadDir.resolve(newFileName);
 				if (Files.exists(oldPath)) {
@@ -137,7 +136,7 @@ public class InputController {
 			TransactionDetailsEntity detail = new TransactionDetailsEntity();
 			detail.setTransaction(savedTransaction);
 			detail.setCategory(category);
-			detail.setType(detailForm.getType());
+			detail.setType(category.getType());
 			detail.setItemName(detailForm.getItemName());
 			detail.setAmount(detailForm.getAmount());
 			detail.setFile(detailForm.getFile());

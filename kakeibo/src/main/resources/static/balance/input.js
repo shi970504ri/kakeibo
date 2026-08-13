@@ -33,17 +33,15 @@ function validateForm(event) {
 	let validCount = 0;
 	let errors = [];
 	rows.forEach((row, index) => {
-		const noText = row.querySelector(".no").textContent;
-		const type = row.querySelector("select[name*='type']").value.trim();
+		const noText = row.querySelector(".no_badge") ? row.querySelector(".no_badge").textContent : `No.${index + 1}`;
 		const itemName = row.querySelector(".item_name input").value.trim();
 		const amount = row.querySelector(".item_amount input").value.trim();
 		const categoryId = row.querySelector(".item_category select").value.trim();
 		const filePath = row.querySelector(".file_path_input").value.trim();
 		const memo = row.querySelector(".item_memo input").value.trim();
-		const hasAnyInput = (type !== "" || itemName !== "" || amount !== "" || categoryId !== "" || filePath !== "" || memo !== "");
+		const hasAnyInput = (itemName !== "" || amount !== "" || categoryId !== "" || filePath !== "" || memo !== "");
 		if (hasAnyInput) {
 			const missing = [];
-			if (type === "") missing.push("収入or支出");
 			if (itemName === "") missing.push("商品名");
 			if (amount === "") missing.push("金額");
 			if (categoryId === "") missing.push("カテゴリ");
@@ -74,17 +72,12 @@ function addRows(count) {
 		const row = document.createElement("div");
 		row.className = "detail_row";
 		row.innerHTML = `
-			<p class="no">No.00000</p>
-			<select name="">
-				<option value="">収入or支出</option>
-				<option value="income">収入</option>
-				<option value="expense">支出</option>
-			</select>
+			<div class="no_badge">No.00000</div>
 			<div class="item_name">
-				<input type="text" name="" placeholder="商品名 *">
+				<input type="text" name="" placeholder="商品名または項目" autocomplete="off">
 			</div>
 			<div class="item_amount">
-				<input type="number" name="" placeholder="金額 *">
+				<input type="number" name="" placeholder="0">
 			</div>
 			<div class="item_category">
 				<select name="">
@@ -94,13 +87,13 @@ function addRows(count) {
 			<div class="item_file">
 				<input type="hidden" class="file_path_input" name="">
 				<input type="file" class="file_input" hidden accept="image/*" onchange="uploadFile(this)">
-				<button class="file_btn" type="button">画像選択 *</button>
+				<button class="file_btn" type="button">📁 画像選択</button>
 			</div>
 			<div class="item_memo">
-				<input type="text" name="" placeholder="メモ (任意)">
+				<input type="text" name="" placeholder="メモ" autocomplete="off">
 			</div>
 			<div class="item_delete">
-				<button type="button" class="delete_btn" onclick="deleteRow(this)">削除</button>
+				<button type="button" class="delete_btn" onclick="deleteRow(this)" title="行を削除">削除</button>
 			</div>
 		`;
 		detailList.appendChild(row);
@@ -119,8 +112,7 @@ function deleteRow(button) {
 function renumberRows() {
 	const rows = document.querySelectorAll(".detail_row");
 	rows.forEach((row, index) => {
-		row.querySelector(".no").textContent = `No.${String(index + 1).padStart(5, "0")}`;
-		row.querySelector("select[name*='type']").name = `details[${index}].type`;
+		row.querySelector(".no_badge").textContent = `No.${String(index + 1).padStart(3, "0")}`;
 		row.querySelector(".item_name input").name = `details[${index}].itemName`;
 		row.querySelector(".item_amount input").name = `details[${index}].amount`;
 		row.querySelector(".item_category select").name = `details[${index}].categoryId`;
