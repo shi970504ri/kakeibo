@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.sss.kakeibo.entity.CategoriesEntity;
@@ -22,7 +21,6 @@ import jp.co.sss.kakeibo.repository.CategoriesRepository;
 import jp.co.sss.kakeibo.repository.UsersRepository;
 
 @RestController
-@RequestMapping("/api/categories")
 public class CategoryApiController {
 	@Autowired
 	private CategoriesRepository categoriesRepository;
@@ -30,7 +28,7 @@ public class CategoryApiController {
 	private UsersRepository usersRepository;
 	@Autowired
 	private HttpSession session;
-	@GetMapping
+	@GetMapping("/api/categories")
 	public List<CategoriesEntity> getCategories() {
 		Integer userId = (Integer) session.getAttribute("userId");
 		if (userId == null) {
@@ -40,7 +38,7 @@ public class CategoryApiController {
 		user.setUserId(userId);
 		return categoriesRepository.findByUser(user);
 	}
-	@PostMapping
+	@PostMapping("/api/categories")
 	public ResponseEntity<?> addCategory(@RequestBody Map<String, String> body) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		if (userId == null) {
@@ -59,7 +57,7 @@ public class CategoryApiController {
 		categoriesRepository.save(category);
 		return ResponseEntity.ok().build();
 	}
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/api/categories/{id}")
 	public ResponseEntity<?> deleteCategory(@PathVariable Integer id) {
 		categoriesRepository.deleteById(id);
 		return ResponseEntity.ok().build();

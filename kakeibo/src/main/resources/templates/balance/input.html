@@ -123,7 +123,7 @@
 									<input type="text" th:name="|details[${stat.index}].itemName|" placeholder="商品名または項目" autocomplete="off">
 								</div>
 								<div class="item_amount">
-									<input type="number" th:name="|details[${stat.index}].amount|" placeholder="0">
+									<input type="number" inputmode="numeric" th:name="|details[${stat.index}].amount|" placeholder="0">
 								</div>
 								<div class="item_category">
 									<select th:name="|details[${stat.index}].categoryId|">
@@ -131,10 +131,7 @@
 											カテゴリ選択
 										</option>
 										<optgroup label="【支出】">
-											<option th:each="cat : ${categories}" 
-													th:if="${cat.type == 'expense' or cat.type == '支出' or cat.type == '1'}" 
-													th:value="${cat.categoryId}" 
-													th:text="${cat.name}">
+											<option th:each="cat : ${categories}" th:if="${cat.type == 'expense' or cat.type == '支出' or cat.type == '1'}" th:value="${cat.categoryId}" th:text="${cat.name}">
 											</option>
 										</optgroup>
 										<optgroup label="【収入】">
