@@ -13,65 +13,97 @@
 		<div th:replace="~{header/header :: header}">
 		</div>
 		<div class="list_top">
-			<div class="history_card">
+			<div th:if="${isEmpty}">
+				<p class="no_date_message">
+					データがありません。
+				</p>
+			</div>
+			<div class="history_card" th:each="item : ${transactionList}">
 				<div class="card_header">
-					<div class="history_title">
-						2026-04-20 10:00 / 給与
+					<div class="history_title" th:text="${item.transaction.date} + ' / ' + ${item.transaction.storeName}">
+						2026-04-20 / 店舗名
 					</div>
 					<div class="action">
-						<button class="file_btn">
+						<button class="file_btn" type="button" th:if="${item.transaction.file != null and !item.transaction.file.empty}" th:data-src="@{/uploads/{f}(f=${item.transaction.file})}" onclick="showImage(this.getAttribute('data-src'))">
 							画像
 						</button>
-						<a class="edit_btn" th:href="@{/balance/edit}">
+						<a class="edit_btn" th:href="@{/balance/edit(id=${item.transaction.transactionId})}">
 							編集
 						</a>
-						<button class="delete_btn">
-							削除
-						</button>
+						<form class="delete" th:action="@{/balance/delete}" method="post" onsubmit="return confirm('本当に削除しますか？');">
+							<input type="hidden" name="transactionId" th:value="${item.transaction.transactionId}">
+							<button class="delete_btn" type="submit">
+								削除
+							</button>
+						</form>
 					</div>
 				</div>
 				<div class="detail_list">
-					<div class="detail_row">
-						<span class="item_name">
-							給料
+					<div class="detail_row" th:each="d : ${item.transaction.details}">
+						<span class="item_name" th:text="${d.itemName}">
+							商品名
 						</span>
-						<span class="item_type">
-							+ ¥100,000,000
+						<span class="item_type" th:classappend="${d.type != null and (d.type.equalsIgnoreCase('INCOME') or d.type == '収入') ? 'income' : 'expense'}" th:text="${(d.type != null and (d.type.equalsIgnoreCase('INCOME') or d.type == '収入')) ? '¥' + #numbers.formatInteger(d.amount, 1, 'COMMA') : '¥-' + #numbers.formatInteger(d.amount, 1, 'COMMA')}">
+							¥0
 						</span>
 					</div>
 				</div>
 				<div class="summary">
-					<div>
-						収入　¥200,000,000
+					<div class="summary_item">
+						<span class="summary_label">
+							収入
+						</span>
+						<span class="summary_value">
+							¥ 
+							<th:block th:text="${#numbers.formatInteger(item.incomeTotal, 1, 'COMMA')}">
+								0
+							</th:block>
+						</span>
 					</div>
-					<div>
-						支出　¥0
+					<div class="summary_item">
+						<span class="summary_label">
+							支出
+						</span>
+						<span class="summary_value">
+							¥ 
+							<th:block th:text="${#numbers.formatInteger(item.expenseTotal, 1, 'COMMA')}">
+								0
+							</th:block>
+						</span>
 					</div>
-					<div>
-						差額　+ ¥200,000,000
+					<div class="summary_item">
+						<span class="summary_label">
+							差額
+						</span>
+						<span class="summary_value balance_val" th:classappend="${item.balance >= 0} ? 'plus_color' : 'minus_color'" th:text="${item.balance >= 0 ? '+¥' + #numbers.formatInteger(item.balance, 1, 'COMMA') : '¥-' + #numbers.formatInteger(-item.balance, 1, 'COMMA')}">
+							+¥0
+						</span>
 					</div>
 				</div>
 			</div>
-			<div class="pagination">
-				<button class="next_btn">
-					&lt;次へ
-				</button>
+			<div class="pagination" th:if="${totalPages > 1}">
+				<a th:if="${currentPage > 0}" th:href="@{/balance/list(page=${currentPage - 1})}" class="next_btn">&lt;前へ</a>
 				<div class="page_number">
-					<button class="active">
-						1
-					</button>
-					<button>
-						2
-					</button>
-					<button>
-						3
-					</button>
+					<th:block th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+						<a th:href="@{/balance/list(page=${i})}">
+							<button th:classappend="${i == currentPage} ? 'active' : ''" th:text="${i + 1}">
+								1
+							</button>
+						</a>
+					</th:block>
 				</div>
-				<button class="back_btn">
-					戻る&gt;
-				</button>
+				<a th:if="${currentPage + 1 < totalPages}" th:href="@{/balance/list(page=${currentPage + 1})}" class="back_btn">
+					次へ&gt;
+				</a>
 			</div>
 		</div>
+		<div id="imageModal" class="modal" onclick="closeImage()">
+			<span class="modal-close">
+				&times;
+			</span>
+			<img id="modalImg" class="modal-content" src="" alt="画像プレビュー">
+		</div>
+		<script th:src="@{/balance/list.js}"></script>
 		<div th:replace="~{footer/footer :: footer}">
 		</div>
 	</body>

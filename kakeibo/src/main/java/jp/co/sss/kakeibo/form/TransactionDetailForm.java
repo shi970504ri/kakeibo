@@ -1,12 +1,18 @@
 package jp.co.sss.kakeibo.form;
 
 public class TransactionDetailForm {
+	private Integer transactionDetailId;
 	private String type;
 	private Integer amount;
 	private Integer categoryId;
-	private String file;
 	private String memo;
 	private String itemName;
+	public Integer getTransactionDetailId() {
+		return transactionDetailId;
+	}
+	public void setTransactionDetailId(Integer transactionDetailId) {
+		this.transactionDetailId = transactionDetailId;
+	}
 	public String getType() {
 		return type;
 	}
@@ -24,12 +30,6 @@ public class TransactionDetailForm {
 	}
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
 	}
 	public String getMemo() {
 		return memo;

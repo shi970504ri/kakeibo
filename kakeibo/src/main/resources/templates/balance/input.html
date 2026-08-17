@@ -7,15 +7,20 @@
 		<link rel="stylesheet" th:href="@{/balance/input.css}">
 		<link rel="stylesheet" th:href="@{/footer/footer.css}">
 		<script th:src="@{/balance/input.js}" defer></script>
-		<title>収支入力</title>
+		<title>
+			収支入力
+		</title>
 	</head>
 	<body>
 		<div th:replace="~{header/header :: header}"></div>
 		<main class="main_container">
 			<form class="input_form" th:action="@{/balance/save}" method="post" th:object="${transactionForm}" onsubmit="validateForm(event)">
 				<div th:if="${errorMessage}" class="error_message_box">
-					<span class="error_icon">⚠️</span>
-					<p th:text="${errorMessage}"></p>
+					<span class="error_icon">
+						⚠️
+					</span>
+					<p th:text="${errorMessage}">
+					</p>
 				</div>
 				<section class="card_section">
 					<div class="section_header">
@@ -26,7 +31,7 @@
 					<div class="basic_info_grid">
 						<div class="field_group">
 							<label>
-								日付
+								日付 
 								<span class="badge required">
 									必須
 								</span>
@@ -35,7 +40,7 @@
 						</div>
 						<div class="field_group">
 							<label>
-								時間
+								時間 
 								<span class="badge required">
 									必須
 								</span>
@@ -44,12 +49,24 @@
 						</div>
 						<div class="field_group field_store">
 							<label>
-								店舗名
+								店舗名 
 								<span class="badge required">
 									必須
 								</span>
 							</label>
 							<input type="text" name="storeName" th:field="*{storeName}" placeholder="例: スーパー〇〇" required autocomplete="off">
+						</div>
+						<div class="field_group">
+							<label>
+								添付画像 (必須)
+							</label>
+							<input type="hidden" id="mainFilePath" th:field="*{file}">
+							<input type="file" id="mainFileInput" class="file_input" hidden accept="image/*" onchange="uploadMainFile(this)" required>
+							<button class="file_btn" type="button" onclick="document.getElementById('mainFileInput').click()">
+								📁 画像選択
+							</button>
+							<span id="fileNameDisplay" style="margin-left: 10px; font-size: 0.9em;">
+							</span>
 						</div>
 					</div>
 				</section>
@@ -64,17 +81,11 @@
 							カテゴリ選択
 						</option>
 						<optgroup label="【支出】">
-							<option th:each="cat : ${categories}" 
-									th:if="${cat.type == 'expense' or cat.type == '支出' or cat.type == '1'}" 
-									th:value="${cat.categoryId}" 
-									th:text="${cat.name}">
+							<option th:each="cat : ${categories}" th:if="${cat.type == 'expense' or cat.type == '支出' or cat.type == '1'}" th:value="${cat.categoryId}" th:text="${cat.name}">
 							</option>
 						</optgroup>
 						<optgroup label="【収入】">
-							<option th:each="cat : ${categories}" 
-									th:if="${cat.type == 'income' or cat.type == '収入' or cat.type == '0'}" 
-									th:value="${cat.categoryId}" 
-									th:text="${cat.name}">
+							<option th:each="cat : ${categories}" th:if="${cat.type == 'income' or cat.type == '収入' or cat.type == '0'}" th:value="${cat.categoryId}" th:text="${cat.name}">
 							</option>
 						</optgroup>
 					</select>
@@ -84,25 +95,19 @@
 								No.
 							</div>
 							<div>
-								商品名・項目
+								商品名・項目 
 								<span class="req_mark">
 									*
 								</span>
 							</div>
 							<div>
-								金額
+								金額 
 								<span class="req_mark">
 									*
 								</span>
 							</div>
 							<div>
-								カテゴリ
-								<span class="req_mark">
-									*
-								</span>
-							</div>
-							<div>
-								添付画像
+								カテゴリ 
 								<span class="req_mark">
 									*
 								</span>
@@ -135,20 +140,10 @@
 											</option>
 										</optgroup>
 										<optgroup label="【収入】">
-											<option th:each="cat : ${categories}" 
-													th:if="${cat.type == 'income' or cat.type == '収入' or cat.type == '0'}" 
-													th:value="${cat.categoryId}" 
-													th:text="${cat.name}">
+											<option th:each="cat : ${categories}" th:if="${cat.type == 'income' or cat.type == '収入' or cat.type == '0'}" th:value="${cat.categoryId}" th:text="${cat.name}">
 											</option>
 										</optgroup>
 									</select>
-								</div>
-								<div class="item_file">
-									<input type="hidden" class="file_path_input" th:name="|details[${stat.index}].file|">
-									<input type="file" th:id="'file' + ${stat.index}" class="file_input" hidden accept="image/*" onchange="uploadFile(this)">
-									<button class="file_btn" type="button" th:onclick="|document.getElementById('file${stat.index}').click()|">
-										📁 画像選択
-									</button>
 								</div>
 								<div class="item_memo">
 									<input type="text" th:name="|details[${stat.index}].memo|" placeholder="メモ" autocomplete="off">

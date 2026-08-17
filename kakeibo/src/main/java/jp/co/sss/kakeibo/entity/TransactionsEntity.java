@@ -2,7 +2,9 @@ package jp.co.sss.kakeibo.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -39,11 +42,6 @@ public class TransactionsEntity {
 	@Column(name = "store_name", nullable = false, length = 255)
 	private String storeName;
 	/*
-	 * 商品名or項目
-	 */
-	@Column(name = "item_name", nullable = false, length = 255)
-	private String itemName;
-	/*
 	 * 画像
 	 */
 	@Column(name = "file", nullable = false, unique = true, length = 255)
@@ -63,6 +61,8 @@ public class TransactionsEntity {
 	 */
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
+	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<TransactionDetailsEntity> details;
 	public TransactionsEntity() {
 	}
 	/*
@@ -92,12 +92,6 @@ public class TransactionsEntity {
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
 	}
-	public String getItemName() {
-		return itemName;
-	}
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
 	public String getFile() {
 		return file;
 	}
@@ -121,5 +115,11 @@ public class TransactionsEntity {
 	}
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public List<TransactionDetailsEntity> getDetails() {
+		return details;
+	}
+	public void setDetails(List<TransactionDetailsEntity> details) {
+		this.details = details;
 	}
 }

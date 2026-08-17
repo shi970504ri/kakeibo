@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="context-path" th:content="@{/}">
 		<link rel="stylesheet" th:href="@{/header/header.css}">
 		<link rel="stylesheet" th:href="@{/balance/edit.css}">
 		<link rel="stylesheet" th:href="@{/footer/footer.css}">
@@ -11,88 +12,170 @@
 		</title>
 	</head>
 	<body>
-		<div th:replace="~{header/header :: header}">
-		</div>
-		<form action="/register" method="post" enctype="multipart/form-data">
-			<section class="section">
-				<div class="section_list">
-					<h2 class="section_title">
-						基本情報
-					</h2>
+		<div th:replace="~{header/header :: header}"></div>
+		<main class="main_container">
+			<form class="edit_form" th:action="@{/balance/save}" method="post" th:object="${transactionForm}" onsubmit="validateForm(event)">
+				<div th:if="${errorMessage}" class="error_message_box">
+					<span class="error_icon">⚠️</span>
+					<p th:text="${errorMessage}"></p>
 				</div>
-				<div class="basic_info">
-					<input type="date" name="targetDate" value="2026-05-07">
-					<input type="time" name="targetTime" value="12:45">
-					<input type="text" name="storeName" value="セブンイレブン">
-				</div>
-			</section>
-			<section class="section">
-				<div class="section_list">
-					<h2 class="section_title">
-						詳細情報
-					</h2>
-				</div>
-				<div class="detail_list">
-					<div class="detail_row">
-						<p class="no">
-							No.00001
-						</p>
-						<select name="type00001">
-							<option class="" value="">
-								収入or支出
-							</option>
-							<option value="income" selected>
-								収入
-							</option>
-							<option value="expense">
-								支出
-							</option>
-						</select>
-						<div class="item_amount">
-							<input type="number" name="amount00001" value="50000">
+				<section class="card_section">
+					<div class="section_header">
+						<h2 class="section_title">
+							基本情報
+						</h2>
+					</div>
+					<div class="basic_info_grid">
+						<div class="field_group">
+							<label>
+								日付
+								<span class="badge required">
+									必須
+								</span>
+							</label>
+							<input type="date" name="targetDate" th:field="*{targetDate}" required>
 						</div>
-						<div class="item_category">
-							<input type="text" name="category00001" value="給料">
+						<div class="field_group">
+							<label>
+								時間
+								<span class="badge required">
+									必須
+								</span>
+							</label>
+							<input type="time" name="targetTime" th:field="*{targetTime}" required>
 						</div>
-						<div class="item_file">
-							<input type="file" id="file00001" class="file_input" name="file01" hidden accept="image/*" onchange="uploadFile(this)">
-							<button class="file_btn" type="button" onclick="showFile('00001')">
-								画像選択済み
-								<br>
-								再選択可能
-							</button>
-						</div>
-						<div class="item_memo">
-							<input type="text" name="memo00001" value="5月分">
-						</div>
-						<div class="item_delete">
-							<button type="button" class="delete_btn" onclick="deleteRow(this)">
-								削除
-							</button>
+						<div class="field_group field_store">
+							<label>
+								店舗名
+								<span class="badge required">
+									必須
+								</span>
+							</label>
+							<input type="text" name="storeName" th:field="*{storeName}" placeholder="例: スーパー〇〇" required autocomplete="off">
 						</div>
 					</div>
-					<div class="all_delete">
-						<button type="button" class="all_delete_btn">
-							全削除
+				</section>
+				<section class="card_section">
+					<div class="section_header">
+						<h2 class="section_title">
+							詳細情報
+						</h2>
+					</div>
+					<select id="categoryTemplate" style="display:none;">
+						<option value="">
+							カテゴリ選択
+						</option>
+						<optgroup label="【支出】">
+							<option th:each="cat : ${categories}" 
+									th:if="${cat.type == 'expense' or cat.type == '支出' or cat.type == '1'}" 
+									th:value="${cat.categoryId}" 
+									th:text="${cat.name}">
+							</option>
+						</optgroup>
+						<optgroup label="【収入】">
+							<option th:each="cat : ${categories}" 
+									th:if="${cat.type == 'income' or cat.type == '収入' or cat.type == '0'}" 
+									th:value="${cat.categoryId}" 
+									th:text="${cat.name}">
+							</option>
+						</optgroup>
+					</select>
+					<div class="detail_container">
+						<div class="detail_header">
+							<div>
+								No.
+							</div>
+							<div>
+								商品名・項目
+								<span class="req_mark">
+									*
+								</span>
+							</div>
+							<div>
+								金額
+								<span class="req_mark">
+									*
+								</span>
+							</div>
+							<div>
+								カテゴリ
+								<span class="req_mark">
+									*
+								</span>
+							</div>
+							<div>
+								添付画像
+								<span class="req_mark">
+									*
+								</span>
+							</div>
+							<div>
+								メモ (任意)
+							</div>
+							<div>
+								操作
+							</div>
+						</div>
+						<div class="detail_list">
+							<div class="detail_row" th:each="detail, stat : *{details}">
+								<div class="no_badge" th:text="'No.' + ${#numbers.formatInteger(stat.index + 1, 3)}">
+									No.001
+								</div>
+								<div class="item_name">
+									<input type="text" th:name="|details[${stat.index}].itemName|" placeholder="商品名または項目" autocomplete="off">
+								</div>
+								<div class="item_amount">
+									<input type="number" inputmode="numeric" th:name="|details[${stat.index}].amount|" placeholder="0">
+								</div>
+								<div class="item_category">
+									<select th:name="|details[${stat.index}].categoryId|">
+										<option value="">
+											カテゴリ選択
+										</option>
+										<optgroup label="【支出】">
+											<option th:each="cat : ${categories}" th:if="${cat.type == 'expense' or cat.type == '支出' or cat.type == '1'}" th:value="${cat.categoryId}" th:text="${cat.name}">
+											</option>
+										</optgroup>
+										<optgroup label="【収入】">
+											<option th:each="cat : ${categories}" 
+													th:if="${cat.type == 'income' or cat.type == '収入' or cat.type == '0'}" 
+													th:value="${cat.categoryId}" 
+													th:text="${cat.name}">
+											</option>
+										</optgroup>
+									</select>
+								</div>
+								<div class="item_file">
+									<input type="hidden" class="file_path_edit" th:name="|details[${stat.index}].file|">
+									<input type="file" th:id="'file' + ${stat.index}" class="file_edit" hidden accept="image/*" onchange="uploadFile(this)">
+									<button class="file_btn" type="button" th:onclick="|document.getElementById('file${stat.index}').click()|">
+										📁 画像選択
+									</button>
+								</div>
+								<div class="item_memo">
+									<input type="text" th:name="|details[${stat.index}].memo|" placeholder="メモ" autocomplete="off">
+								</div>
+								<div class="item_delete">
+									<button type="button" class="delete_btn" onclick="deleteRow(this)" title="行を削除">
+										削除
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item_addition">
+						<button type="button" class="addition_btn" onclick="addRows(5)">
+							＋ 明細を5件追加する
 						</button>
 					</div>
-				</div>
-			</section>
-		</form>
-		<div id="fileModal" class="modal">
-			<div class="modal_content">
-				<img id="previewFile" src="" alt="画像">
-				<div class="modal_button">
-					<button type="button" id="reUploadBtn">
-						再登録
-					</button>
-					<button type="button" onclick="closeModail()">
-						閉じる
+				</section>
+				<div class="form_actions">
+					<button type="submit" class="register_btn">
+						この内容で登録する
 					</button>
 				</div>
-			</div>
-		</div>
-		<div th:replace="~{footer/footer :: footer}">
-		</div>
+			</form>
+		</main>
+		<div th:replace="~{footer/footer :: footer}"></div>
 	</body>
 </html>

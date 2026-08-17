@@ -1,11 +1,13 @@
-async function uploadFile(input) {
+async function uploadMainFile(input) {
 	const file = input.files[0];
 	if (!file) return;
-	const row = input.closest(".detail_row");
-	const button = row.querySelector(".file_btn");
-	const hiddenInput = row.querySelector(".file_path_input");
+	const hiddenInput = document.getElementById("mainFilePath");
+	const fileNameDisplay = document.getElementById("fileNameDisplay");
+	const storeInput = document.querySelector('input[name="storeName"]');
+	const storeName = storeInput ? storeInput.value.trim() : "";
 	const formData = new FormData();
 	formData.append("file", file);
+	formData.append("storeName", storeName);
 	const contextPathMeta = document.querySelector('meta[name="context-path"]');
 	let contextPath = contextPathMeta ? contextPathMeta.getAttribute('content') : '/';
 	if (!contextPath.endsWith('/')) {
@@ -16,36 +18,48 @@ async function uploadFile(input) {
 			method: "POST",
 			body: formData
 		});
+		const result = await response.json();
 		if (response.ok) {
-			const result = await response.json();
-			button.innerHTML = `選択済み<br>再選択可能`;
 			hiddenInput.value = result.fileName || file.name;
+			if (fileNameDisplay) {
+				fileNameDisplay.textContent = `選択中: ${file.name}`;
+				fileNameDisplay.style.color = "#0284c7";
+			}
 		} else {
-			alert("画像のアップロードに失敗しました (Status: " + response.status + ")");
+			alert(result.error || "画像のアップロードに失敗しました (Status: " + response.status + ")");
+			input.value = "";
+			hiddenInput.value = "";
+			if (fileNameDisplay) fileNameDisplay.textContent = "";
 		}
 	} catch (error) {
 		console.error(error);
 		alert("通信エラーが発生しました");
+		input.value = "";
+		hiddenInput.value = "";
+		if (fileNameDisplay) fileNameDisplay.textContent = "";
 	}
 }
 function validateForm(event) {
+	let errors = [];
+	const mainFilePath = document.getElementById("mainFilePath").value.trim();
+	if (mainFilePath === "") {
+		errors.push("【基本情報】添付画像を選択・アップロードしてください。");
+	}
 	const rows = document.querySelectorAll(".detail_row");
 	let validCount = 0;
-	let errors = [];
 	rows.forEach((row, index) => {
 		const noText = row.querySelector(".no_badge") ? row.querySelector(".no_badge").textContent : `No.${index + 1}`;
 		const itemName = row.querySelector(".item_name input").value.trim();
 		const amount = row.querySelector(".item_amount input").value.trim();
 		const categoryId = row.querySelector(".item_category select").value.trim();
-		const filePath = row.querySelector(".file_path_input").value.trim();
 		const memo = row.querySelector(".item_memo input").value.trim();
-		const hasAnyInput = (itemName !== "" || amount !== "" || categoryId !== "" || filePath !== "" || memo !== "");
+		const hasAnyInput = (itemName !== "" || amount !== "" || categoryId !== "" || memo !== "");
 		if (hasAnyInput) {
 			const missing = [];
 			if (itemName === "") missing.push("商品名");
 			if (amount === "") missing.push("金額");
 			if (categoryId === "") missing.push("カテゴリ");
-			if (filePath === "") missing.push("画像");
+
 			if (missing.length > 0) {
 				errors.push(`${noText}: 未入力項目があります（${missing.join("、")}）`);
 			} else {
@@ -53,13 +67,11 @@ function validateForm(event) {
 			}
 		}
 	});
+	if (validCount === 0 && errors.length === 0) {
+		errors.push("【詳細情報】明細を少なくとも1件は入力してください。");
+	}
 	if (errors.length > 0) {
 		alert("【入力エラー】\n" + errors.join("\n"));
-		event.preventDefault();
-		return false;
-	}
-	if (validCount === 0) {
-		alert("明細を少なくとも1件は完全に入力してください。");
 		event.preventDefault();
 		return false;
 	}
@@ -72,22 +84,17 @@ function addRows(count) {
 		const row = document.createElement("div");
 		row.className = "detail_row";
 		row.innerHTML = `
-			<div class="no_badge">No.00000</div>
+			<div class="no_badge">No.000</div>
 			<div class="item_name">
 				<input type="text" name="" placeholder="商品名または項目" autocomplete="off">
 			</div>
 			<div class="item_amount">
-				<input type="number" name="" placeholder="0">
+				<input type="number" inputmode="numeric" name="" placeholder="0">
 			</div>
 			<div class="item_category">
 				<select name="">
 					${categoryOptionsHtml}
 				</select>
-			</div>
-			<div class="item_file">
-				<input type="hidden" class="file_path_input" name="">
-				<input type="file" class="file_input" hidden accept="image/*" onchange="uploadFile(this)">
-				<button class="file_btn" type="button">📁 画像選択</button>
 			</div>
 			<div class="item_memo">
 				<input type="text" name="" placeholder="メモ" autocomplete="off">
@@ -116,15 +123,14 @@ function renumberRows() {
 		row.querySelector(".item_name input").name = `details[${index}].itemName`;
 		row.querySelector(".item_amount input").name = `details[${index}].amount`;
 		row.querySelector(".item_category select").name = `details[${index}].categoryId`;
-		row.querySelector(".item_file .file_path_input").name = `details[${index}].file`;
 		row.querySelector(".item_memo input").name = `details[${index}].memo`;
-		const fileInput = row.querySelector(".file_input");
-		const fileBtn = row.querySelector(".file_btn");
-		const fileId = `file_${index}`;
-		fileInput.id = fileId;
-		fileBtn.setAttribute("onclick", `document.getElementById('${fileId}').click()`);
 	});
 }
 document.addEventListener("DOMContentLoaded", () => {
-	renumberRows();
+	const currentRows = document.querySelectorAll(".detail_row");
+	if (currentRows.length < 5) {
+		addRows(5 - currentRows.length);
+	} else {
+		renumberRows();
+	}
 });

@@ -49,11 +49,6 @@ public class TransactionDetailsEntity {
 	@Column(name = "amount", nullable = false, precision = 12, scale = 2)
 	private Integer amount;
 	/*
-	 * 画像
-	 */
-	@Column(name = "file", nullable = false, unique = true, length = 255)
-	private String file;
-	/*
 	 * メモ
 	 */
 	@Column(name = "memo", length = 255)
@@ -108,12 +103,6 @@ public class TransactionDetailsEntity {
 	}
 	public void setAmount(Integer amount) {
 		this.amount = amount;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
 	}
 	public String getMemo() {
 		return memo;
