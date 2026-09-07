@@ -11,9 +11,17 @@ body {
 	padding: 10px;
 	background-color: rgba(150, 150, 150, 1);
 }
+.month_selector {
+	text-align: center;
+	margin: 10px;
+	font-size: 20px;
+}
 .adove {
 	display: flex;
 	gap: 20px;
+}
+#prevMonth, #nextMonth {
+	font-size: 20px;
 }
 .income, .expenditure {
 	flex: 1;
@@ -43,47 +51,38 @@ body {
 	border: 2px solid rgba(0, 0, 0, 1);
 	flex-direction: column-reverse;
 }
-.in_other {
-	background-color: rgba(250, 170, 230, 1);
+.in_bar, .ex_bar {
+	width: 50px;
+	height: 350px;
+	background-color: rgba(255, 255, 255, 1);
+	border: 2px solid rgba(100, 100, 100, 1);
+	display: flex;
+	flex-direction: column-reverse;
+	border-radius: 4px;
+	overflow: hidden;
+	position: relative;
 }
-.in_send {
-	background-color: rgba(255, 110, 200, 1);
+.bar-segment {
+	width: 100%;
+	transition: height 0.3s ease;
+	cursor: pointer;
+	border-top: 1px solid rgba(255, 255, 255, 0.8);
+	box-sizing: border-box;
 }
-.in_sub {
-	background-color: rgba(255, 180, 110, 1);
+.bar-segment:hover {
+	opacity: 0.85;
 }
-.in_main {
-	background-color: rgba(255, 0, 0, 1);
-}
-.ex_other {
-	background-color: rgba(200, 200, 200, 1);
-}
-.ex_tax {
-	background-color: rgba(125, 125, 125, 1);
-}
-.ex_entertainment {
-	background-color: rgba(215, 125, 255, 1);
-}
-.ex_medical {
-	background-color: rgba(150, 0, 200, 1);
-}
-.ex_traffic {
-	background-color: rgba(75, 0, 150, 1);
-}
-.ex_rent {
-	background-color: rgba(125, 255, 255, 1);
-}
-.ex_phone {
-	background-color: rgba(0, 150, 255, 1);
-}
-.ex_water {
-	background-color: rgba(0, 0, 255, 1);
-}
-.ex_daily {
-	background-color: rgba(0, 185, 0, 1);
-}
-.ex_food {
-	background-color: rgba(0, 75, 10, 1);
+.chart-tooltip {
+	position: absolute;
+	display: none;
+	padding: 6px 10px;
+	background-color: rgba(50, 50, 50, 0.9);
+	color: rgba(255, 255, 255, 1);
+	font-size: 12px;
+	border-radius: 4px;
+	pointer-events: none;
+	z-index: 1000;
+	white-space: nowrap;
 }
 .legend {
 	width: 20ch;
@@ -91,117 +90,75 @@ body {
 .legend_title {
 	margin-bottom: 15px;
 }
-.in_other_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(250, 170, 230, 1);
-	margin-right: 5px;
+.cat-color-0, .legend-icon.cat-color-0::before {
+	background: linear-gradient(135deg, rgba(255, 100, 100, 1), rgba(255, 150, 150, 1));
 }
-.in_send_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(255, 110, 200, 1);
-	margin-right: 5px;
+.cat-color-1, .legend-icon.cat-color-1::before {
+	background: linear-gradient(135deg, rgba(50, 150, 250, 1), rgba(100, 200, 255, 1));
 }
-.in_sub_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(255, 180, 110, 1);
-	margin-right: 5px;
+.cat-color-2, .legend-icon.cat-color-2::before {
+	background: linear-gradient(135deg, rgba(255, 200, 0, 1), rgba(255, 225, 100, 1));
 }
-.in_main_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(255, 0, 0, 1);
-	margin-right: 5px;
+.cat-color-3, .legend-icon.cat-color-3::before {
+	background: linear-gradient(135deg, rgba(40, 200, 100, 1), rgba(100, 230, 150, 1));
 }
-.ex_other_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(200, 200, 200, 1);
-	margin-right: 5px;
+.cat-color-4, .legend-icon.cat-color-4::before {
+	background: linear-gradient(135deg, rgba(175, 80, 230, 1), rgba(210, 130, 255, 1));
 }
-.ex_tax_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(125, 125, 125, 1);
-	margin-right: 5px;
+.cat-color-5, .legend-icon.cat-color-5::before {
+	background: linear-gradient(135deg, rgba(255, 130, 40, 1), rgba(255, 175, 100, 1));
 }
-.ex_entertainment_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(215, 125, 255, 1);
-	margin-right: 5px;
+.cat-color-6, .legend-icon.cat-color-6::before {
+	background: linear-gradient(135deg, rgba(0, 190, 210, 1), rgba(100, 225, 240, 1));
 }
-.ex_medical_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(150, 0, 200, 1);
-	margin-right: 5px;
+.cat-color-7, .legend-icon.cat-color-7::before {
+	background: linear-gradient(135deg, rgba(235, 80, 150, 1), rgba(255, 140, 190, 1));
 }
-.ex_traffic_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(75, 0, 150, 1);
-	margin-right: 5px;
+.cat-color-8, .legend-icon.cat-color-8::before {
+	background: linear-gradient(135deg, rgba(130, 200, 30, 1), rgba(175, 230, 80, 1));
 }
-.ex_rent_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(125, 255, 255, 1);
-	margin-right: 5px;
+.cat-color-9, .legend-icon.cat-color-9::before {
+	background: linear-gradient(135deg, rgba(140, 110, 210, 1), rgba(185, 160, 245, 1));
 }
-.ex_phone_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(0, 150, 255, 1);
-	margin-right: 5px;
+.cat-color-10, .legend-icon.cat-color-10::before {
+	background: linear-gradient(135deg, rgba(210, 50, 50, 1), rgba(245, 110, 110, 1));
 }
-.ex_water_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(0, 0, 255, 1);
-	margin-right: 5px;
+.cat-color-11, .legend-icon.cat-color-11::before {
+	background: linear-gradient(135deg, rgba(30, 110, 200, 1), rgba(85, 165, 245, 1));
 }
-.ex_daily_legend::before {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(0, 185, 0, 1);
-	margin-right: 5px;
+.cat-color-12, .legend-icon.cat-color-12::before {
+	background: linear-gradient(135deg, rgba(220, 160, 0, 1), rgba(245, 200, 65, 1));
 }
-.ex_food_legend::before {
+.cat-color-13, .legend-icon.cat-color-13::before {
+	background: linear-gradient(135deg, rgba(20, 150, 80, 1), rgba(75, 195, 130, 1));
+}
+.cat-color-14, .legend-icon.cat-color-14::before {
+	background: linear-gradient(135deg, rgba(130, 40, 180, 1), rgba(175, 95, 225, 1));
+}
+.cat-color-15, .legend-icon.cat-color-15::before {
+	background: linear-gradient(135deg, rgba(220, 90, 15, 1), rgba(245, 145, 70, 1));
+}
+.cat-color-16, .legend-icon.cat-color-16::before {
+	background: linear-gradient(135deg, rgba(0, 140, 160, 1), rgba(70, 190, 205, 1));
+}
+.cat-color-17, .legend-icon.cat-color-17::before {
+	background: linear-gradient(135deg, rgba(185, 40, 110, 1), rgba(230, 100, 160, 1));
+}
+.cat-color-18, .legend-icon.cat-color-18::before {
+	background: linear-gradient(135deg, rgba(80, 150, 15, 1), rgba(135, 195, 65, 1));
+}
+.cat-color-19, .legend-icon.cat-color-19::before {
+	background: linear-gradient(135deg, rgba(80, 90, 110, 1), rgba(130, 140, 165, 1));
+}
+.legend-icon::before {
 	content: "";
 	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: rgba(0, 75, 10, 1);
-	margin-right: 5px;
+	width: 12px;
+	height: 12px;
+	margin-right: 6px;
+	border-radius: 2px;
+	border: 1px solid rgba(150, 150, 150, 0.5);
+	vertical-align: middle;
 }
 .under {
 	margin-top: 20px;

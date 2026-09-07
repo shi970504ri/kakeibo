@@ -9,4 +9,5 @@ import jp.co.sss.kakeibo.entity.UsersEntity;
 
 public interface CategoriesRepository extends JpaRepository<CategoriesEntity, Integer> {
 	List<CategoriesEntity> findByUser(UsersEntity user);
+	List<CategoriesEntity> findByUserAndType(UsersEntity user, String type);
 }
