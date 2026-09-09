@@ -11,7 +11,8 @@
 		</title>
 	</head>
 	<body>
-		<div th:replace="~{header/header :: header}"></div>
+		<div th:replace="~{header/header :: header}">
+		</div>
 		<div class="top">
 			<div class="month_selector">
 				<button id="prevMonth">
@@ -20,6 +21,7 @@
 				<span id="currentMonthLabel">
 					9999年12月
 				</span>
+				<input id="monthPicker" class="month_picker" type="month">
 				<button id="nextMonth">
 					次月
 				</button>

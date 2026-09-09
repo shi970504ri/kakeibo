@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const prevBtn = document.getElementById("prevMonth");
 	const nextBtn = document.getElementById("nextMonth");
 	const monthLabel = document.getElementById("currentMonthLabel");
+	const monthPicker = document.getElementById("monthPicker");
 	const totalIncomeEl = document.querySelector(".income_mony");
 	const totalExpenseEl = document.querySelector(".expenditure_mony");
 	const balanceElements = document.querySelectorAll(".balance_mony");
@@ -28,9 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		return Math.ceil(amount / digit) * digit;
 	}
 	function update() {
-		const monthKey = `${currentYear}-${String(currentMonth).padStart(2, "0")}`;
+		const formattedMonth = String(currentMonth).padStart(2, "0");
+		const monthKey = `${currentYear}-${formattedMonth}`;
 		if (monthLabel) {
 			monthLabel.textContent = `${currentYear}年${currentMonth}月`;
+		}
+		if (monthPicker) {
+			monthPicker.value = `${currentYear}-${formattedMonth}`;
 		}
 		let carryOver = 0;
 		Object.keys(transactionData).sort().forEach(key => {
@@ -48,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (totalIncomeEl) totalIncomeEl.textContent = formatCurrency(totalIncome);
 		if (totalExpenseEl) totalExpenseEl.textContent = formatCurrency(totalExpense);
 		if (balanceEl) balanceEl.textContent = formatCurrency(balance);
+
 		const maxVal = getCeilUpperLimit(Math.max(totalIncome, totalExpense));
 		renderStackedBar(incomeBarWrapper, currentData.income, maxVal);
 		renderStackedBar(expenseBarWrapper, currentData.expense, maxVal);
@@ -93,6 +99,27 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 			update();
 		});
+	}
+	if (monthPicker) {
+		monthPicker.addEventListener("change", (e) => {
+			const val = e.target.value;
+			if (val) {
+				const [year, month] = val.split("-").map(Number);
+				currentYear = year;
+				currentMonth = month;
+				update();
+			}
+		});
+	}
+	if (monthLabel && monthPicker) {
+		monthLabel.style.cursor = "pointer";
+		monthLabel.addEventListener("click", () => {
+			if (typeof monthPicker.showPicker === "function") {
+				monthPicker.showPicker();
+			} else {
+				monthPicker.click();
+			}
+		})
 	}
 	update();
 });
