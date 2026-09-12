@@ -13,49 +13,65 @@
 		<div th:replace="~{header/header :: header}">
 		</div>
 		<div class="mypage">
-			<details class="section">
+			<div class="user_welcome">
+				<span th:text="${session.userName != null ? session.userName : user.nickname}">
+					ユーザー
+				</span>
+				さん
+			</div>
+			<div th:if="${successMsg}" class="success_message" th:text="${successMsg}">
+			</div>
+			<details class="section" open>
 				<summary class="section_title">
 					ユーザー情報
 				</summary>
-				<div class="content">
-					<div class="form_group">
-						<label class="mail_title">
-							メール
-						</label>
-						<input class="mail" type="email" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com">
+				<form th:action="@{/update/userinfo}" method="post">
+					<div class="content">
+						<div class="form_group">
+							<label class="mail_title">
+								メールアドレス
+							</label>
+							<input class="mail" type="email" name="email" th:value="${user.email}" required>
+						</div>
+						<div class="form_group">
+							<label class="nickname_title">
+								ニックネーム
+							</label>
+							<input class="nickname" type="text" name="nickname" th:value="${user.nickname}" required maxlength="20">
+						</div>
+						<div class="register_area">
+							<button type="submit" class="register_btn">
+								更新
+							</button>
+						</div>
 					</div>
-					<div class="form_group">
-						<label class="tel_title">
-							電話番号
-						</label>
-						<input class="tel" type="tel" value="090-12345678">
-					</div>
-					<div class="register_area">
-						<button class="register_btn">
-							登録
-						</button>
-					</div>
-				</div>
+				</form>
 			</details>
 			<details class="section">
 				<summary class="section_title">
 					セキュリティ情報
 				</summary>
-				<div class="content">
-					<div class="form_group">
-						<label class="tel_title">
-							パスワード
-						</label>
-						<input class="password" type="password" value="Password">
+				<form th:action="@{/update/password}" method="post">
+					<div class="content">
+						<div class="form_group">
+							<label class="password_title">
+								新しいパスワード
+							</label>
+							<div class="password_visibility">
+								<input id="passwordInput" class="password" type="password" name="password" placeholder="変更する場合のみ入力" required>
+								<img id="eyeIcon" class="eye_icon" th:src="@{/image/eye_close_icon.jpeg}" th:data-open-icon="@{/image/eye_open_icon.jpeg}" th:data-close-icon="@{/image/eye_close_icon.jpeg}" alt="トグルアイコン" onclick="togglePassword()">
+							</div>
+						</div>
+						<div class="register_area">
+							<button type="submit" class="register_btn">
+								更新
+							</button>
+						</div>
 					</div>
-					<div class="register_area">
-						<button class="register_btn">
-							登録
-						</button>
-					</div>
-				</div>
+				</form>
 			</details>
 		</div>
+		<script th:src="@{/balance/mypage.js}"></script>
 		<div th:replace="~{footer/footer :: footer}">
 		</div>
 	</body>

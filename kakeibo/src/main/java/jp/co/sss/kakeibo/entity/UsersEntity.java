@@ -25,6 +25,11 @@ public class UsersEntity {
 	@Column(name = "email", nullable = false, unique = true, length = 255)
 	private String email;
 	/*
+	 * ユーザー名
+	 */
+	@Column(name = "nickname", nullable = false, length = 20)
+	private String nickname;
+	/*
 	 * パスワード
 	 */
 	@Column(name = "password", nullable = false, length = 255)
@@ -41,9 +46,6 @@ public class UsersEntity {
 	private LocalDateTime updatedAt;
 	public UsersEntity() {
 	}
-	/*
-	 * get＆set
-	 */
 	public Integer getUserId() {
 		return userId;
 	}
@@ -55,6 +57,12 @@ public class UsersEntity {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getPassword() {
 		return password;
