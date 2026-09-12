@@ -46,7 +46,7 @@
 					土
 				</div>
 			</div>
-			<div id="calendarGrid" class="calendar_grid">
+			<div id="calendarGrid" class="calendar_grid" th:data-registered-dates="${registeredDates}" th:data-current-year-month="${currentYearMonth}">
 			</div>
 		</div>
 		<div th:replace="~{footer/footer :: footer}">

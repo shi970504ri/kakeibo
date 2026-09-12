@@ -58,7 +58,7 @@ body {
 	grid-template-columns: repeat(7, 1fr);
 	gap: 15px 0;
 }
-.day{
+.day {
 	display:flex;
 	width:70px;
 	height:70px;
@@ -69,22 +69,24 @@ body {
 	font-size:24px;
 	cursor:pointer;
 }
-.other_month{
+.sun, .sunday, .holiday {
+	color:rgba(255, 0, 0, 1);
+}
+.sat, .saturday {
+	color:rgba(0, 0, 255, 1);
+}
+.other_month {
 	color:rgba(150, 150, 150, 1);
 }
-.sun{
-	color:rgba(255, 0, 0, 1);
+.day.other_month.saturday {
+	color: rgba(150, 150, 255, 1) !important;
 }
-.sat{
-	color:rgba(0, 0, 255, 1);
+.day.other_month.sunday, .day.other_month.holiday {
+	color: rgba(255, 150, 150, 1) !important;
 }
-
-.sunday{
-	color:rgba(255, 0, 0, 1);
-}
-.saturday{
-	color:rgba(0, 0, 255, 1);
-}
-.today{
+.today {
 	background:rgba(75, 225, 80, 1);
+}
+.has_data {
+	background: rgba(255, 180, 190 ,1);
 }

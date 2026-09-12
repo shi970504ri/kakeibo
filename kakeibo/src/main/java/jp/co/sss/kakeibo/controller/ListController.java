@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +37,10 @@ public class ListController {
 	private HttpSession session;
 	private static final String UPLOAD_DIR = "src/main/resources/static/uploads/";
 	@GetMapping("/balance/list")
-	public String listShow(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+	public String listShow(
+			@RequestParam(name = "page", defaultValue = "0") int page,
+			@RequestParam(name = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+			Model model) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		if (userId == null) {
 			return "redirect:/user/login";
@@ -45,7 +50,13 @@ public class ListController {
 			return "redirect:/user/login";
 		}
 		Pageable pageable = PageRequest.of(page, 20);
-		Page<TransactionsEntity> transactionPage = transactionsRepository.findByUserOrderByDateAscTransactionIdAsc(user, pageable);
+		Page<TransactionsEntity> transactionPage;
+		if (date != null) {
+			transactionPage = transactionsRepository.findByUserAndDateOrderByTransactionIdAsc(user, date, pageable);
+			model.addAttribute("selectedDate", date);
+		} else {
+			transactionPage = transactionsRepository.findByUserOrderByDateAscTransactionIdAsc(user, pageable);
+		}
 		List<TransactionDto> transactionDtoList = transactionPage.getContent().stream().map(t -> {
 			int income = 0;
 			int expense = 0;
