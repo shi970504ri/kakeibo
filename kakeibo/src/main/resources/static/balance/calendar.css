@@ -36,6 +36,18 @@ body {
 	font-size: 25px;
 	font-weight: bold;
 }
+.year_month_picker {
+	font-size: 25px;
+	font-weight: bold;
+	padding: 5px 10px;
+	border: 1px solid rgba(205, 205, 205, 1);
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 1);
+}
+.year_month_picker:hover {
+	background-color: rgba(240, 240, 240, 1);
+}
 .week_header {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
@@ -67,7 +79,10 @@ body {
 	align-items:center;
 	border-radius:50%;
 	font-size:24px;
-	cursor:pointer;
+	cursor:default;
+}
+.day.has_data {
+	cursor: pointer;
 }
 .sun, .sunday, .holiday {
 	color:rgba(255, 0, 0, 1);
