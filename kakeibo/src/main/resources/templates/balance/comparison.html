@@ -5,43 +5,28 @@
 		<link rel="stylesheet" th:href="@{/header/header.css}">
 		<link rel="stylesheet" th:href="@{/balance/comparison.css}">
 		<link rel="stylesheet" th:href="@{/footer/footer.css}">
-		<title>
-			比較表
-		</title>
+		<title>比較表</title>
 	</head>
 	<body>
 		<div th:replace="~{header/header :: header}">
 		</div>
 		<div class="filter">
-			<div class="filter_area">
-				<select id="yearSelect">
-					<option value="2026">
-						2026年
-					</option>
-					<option value="2025">
-						2025年
-					</option>
-					<option value="2024">
-						2024年
-					</option>
-				</select>
-				<select id="categorySelect">
-					<option value="food">
-						食費
-					</option>
-					<option value="utility">
-						光熱費
-					</option>
-					<option value="rent">
-						家賃
-					</option>
-					<option value="transport">
-						交通費
-					</option>
-				</select>
-			</div>
+			<form id="comparisonForm" th:action="@{/balance/comparison}" method="get">
+				<div class="filter_area">
+					<select id="yearSelect" name="year">
+						<option th:each="y : ${years}" th:value="${y}" th:text="${y + '年'}" th:selected="${y == selectedYear}">
+							2026年
+						</option>
+					</select>
+					<select id="categorySelect" name="categoryId">
+						<option th:each="cat : ${categories}" th:value="${cat.categoryId}" th:text="${cat.name}" th:selected="${cat.categoryId == selectedCategoryId}">
+							カテゴリ名
+						</option>
+					</select>
+				</div>
+			</form>
 			<div class="chart_expense">
-				<canvas id="expenseChart">
+				<canvas id="expenseChart" width="960" height="480" th:data-totals="${monthlyTotals}">
 				</canvas>
 			</div>
 		</div>

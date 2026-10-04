@@ -16,6 +16,7 @@
 	font-size: 25px;
 	font-weight: normal;
 	margin-bottom: 0;
+	color : rgba(0, 0, 0, 1);
 }
 .logout_btn {
 	background-color: rgba(220, 50, 50, 1);
