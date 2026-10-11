@@ -11,12 +11,11 @@
 	align-items: center;
 	margin-bottom: 15px;
 }
-
 .header_title {
 	font-size: 25px;
 	font-weight: normal;
 	margin-bottom: 0;
-	color : rgba(0, 0, 0, 1);
+	color: rgba(0, 0, 0, 1);
 }
 .logout_btn {
 	background-color: rgba(220, 50, 50, 1);
@@ -28,11 +27,9 @@
 	font-weight: bold;
 	transition: opacity 0.2s;
 }
-
 .logout_btn:hover {
 	opacity: 0.75;
 }
-
 .header_link_list {
 	display: flex;
 	list-style: none;
@@ -54,14 +51,24 @@
 	display: flex;
 	gap: 10px;
 	align-items: center;
+	flex-wrap: wrap;
 }
-#keywordSelect, #monthSelect {
+#keywordSelect, #monthSelect, #sortSelect {
 	width: 135px;
 	height: 40px;
 	padding: 10px;
 	font-size: 15px;
 	border: 1px solid rgba(150, 150, 150, 1);
 	background: rgba(240, 240, 240, 1);
+}
+#keywordSelect {
+	width: 250px;
+}
+#monthSelect {
+	width: 150px;
+}
+#sortSelect {
+	width: 170px;
 }
 #searchBtn {
 	width: 110px;

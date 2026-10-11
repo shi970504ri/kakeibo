@@ -54,13 +54,36 @@
 						</li>
 					</ul>
 				</nav>
-				<div class="search_area">
-					<input id="keywordSelect" type="text" placeholder="キーワード検索">
-					<input id="monthSelect" type="month">
-					<button id="searchBtn">
+				<form class="search_area" th:action="@{/balance/list}" method="get">
+					<label for="keywordSelect">
+						キーワード
+					</label>
+					<input id="keywordSelect" name="keyword" type="text" th:value="${selectedKeyword}" placeholder="キーワード検索">
+					<label for="monthSelect">
+						年月
+					</label>
+					<input id="monthSelect" name="month" type="month" th:value="${selectedMonth}">
+					<label for="sortSelect">
+						並び替え
+					</label>
+					<select id="sortSelect" name="sort">
+						<option value="date" th:selected="${selectedSort == null or selectedSort == 'date'}">
+							日付順
+						</option>
+						<option value="no" th:selected="${selectedSort == 'no'}">
+							No.昇順
+						</option>
+						<option value="amountAsc" th:selected="${selectedSort == 'amountAsc'}">
+							金額昇順
+						</option>
+						<option value="amountDesc" th:selected="${selectedSort == 'amountDesc'}">
+							金額降順
+						</option>
+					</select>
+					<button id="searchBtn" type="submit">
 						検索
 					</button>
-				</div>
+				</form>
 			</div>
 			<script th:src="@{/header/header.js}" defer></script>
 		</header>
